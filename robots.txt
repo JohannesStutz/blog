@@ -1,1 +1,1 @@
-Sitemap: https://johannesstutz.github.io/blog/sitemap.xml
+Sitemap: https://deeplearning.berlin/sitemap.xml
