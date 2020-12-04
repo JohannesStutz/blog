@@ -480,6 +480,12 @@ p code { font-size: 19px; }
 
 .site-header { border-top: 0; background-color: #FFCF52; font-family: Courier, Monaco, monospace; }
 
-body { background-color: #FFFFF; background-image: url("images/skyline_v1.png"); background-size: 1500px; background-repeat: no-repeat; background-position: center bottom; }
+.page-content { background-image: url("/images/skyline_v2.png"); background-size: 100%; background-repeat: no-repeat; background-position: center bottom; }
+
+.site-footer { background: #000; border-top: 0; padding: 0px 0px 20px 0; }
+
+.social-media-list li a, .pagination li a { background: #ddd; border: 1px solid #bbb; }
+
+.site-footer a { color: #828282; }
 
 /*# sourceMappingURL=style.css.map */
