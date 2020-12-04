@@ -9,3 +9,17 @@
 
 // If you want to turn off dark background for syntax highlighting, comment or delete the below line.
 @import "minima/fastpages-dracula-highlight"; 
+
+.site-header {
+	border-top: 0;
+	background-color: #FFCF52;
+	font-family: Courier, Monaco, monospace;
+}
+
+body {
+	background-color: #FFFFF
+	background-image: url("images/skyline_v1.png")
+	background-size: 1500px;
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
