@@ -478,4 +478,8 @@ pre code { font-size: 15px !important; }
 
 p code { font-size: 19px; }
 
+.site-header { border-top: 0; background-color: #FFCF52; font-family: Courier, Monaco, monospace; }
+
+body { background-color: #FFFFF; background-image: url("images/skyline_v1.png"); background-size: 1500px; background-repeat: no-repeat; background-position: center bottom; }
+
 /*# sourceMappingURL=style.css.map */
