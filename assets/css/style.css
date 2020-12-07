@@ -482,10 +482,12 @@ p code { font-size: 19px; }
 /* Background pattern from Toptal Subtle Patterns */
 body { background: #fdfdfd url("/images/grey.png"); }
 
-article { /* If necessary, different background for article */ /*background: #FFF;*/ }
+article { /* If necessary, different background for article */ background: #fefefe; border: 1px solid #e8e8e8; border-radius: 4px; box-shadow: 0 3px 6px rgba(149, 157, 165, 0.15) !important; padding: 10px 20px; }
 
 /* Header */
-.site-header { border-top: 0; background-color: #FFCF52; font-family: Courier, Monaco, monospace; }
+.site-header { border-top: 0; /*background-color: #FFCF52;*/ background-color: #FEFEFE; font-family: Courier, Monaco, monospace; }
+
+.site-title img { width: 45px; margin-right: 15px; }
 
 /* Add skyline background at the bottom */
 .page-content { background-image: url("/images/skyline_v2.png"); background-size: 85%; background-repeat: no-repeat; background-position: center bottom; padding: 30px 0 10% 0; }
