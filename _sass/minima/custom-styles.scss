@@ -10,20 +10,59 @@
 // If you want to turn off dark background for syntax highlighting, comment or delete the below line.
 @import "minima/fastpages-dracula-highlight"; 
 
+/* Set site-wide subtle background pattern */
+/* Background pattern from Toptal Subtle Patterns */
+body {
+	background: #fdfdfd url("/images/grey.png"); 
+}
+article {
+	/* If necessary, different background for article */
+	/*background: #FFF;*/
+}
+
+/* Header */
 .site-header {
 	border-top: 0;
 	background-color: #FFCF52;
 	font-family: Courier, Monaco, monospace;
 }
 
+/* Add skyline background at the bottom */
 .page-content {
 	background-image: url("/images/skyline_v2.png");
-	background-size: 80%;
+	background-size: 85%;
 	background-repeat: no-repeat;
 	background-position: center bottom;
-	padding: 30px 0 8% 0;
+	padding: 30px 0 10% 0;
 }
 
+/* Assign light grey to every table cell. Table header is defined in theme css. */
+table td {
+    background-color: #fdfdfd;
+}
+
+/* Tweaks to syntax highlighting */ 
+.language-python + .language-plaintext {
+	border-left: 2px solid #323443;
+}
+
+.language-python + .language-plaintext code {
+	color: #515151;
+}
+
+.language-python + .language-plaintext .highlight {
+	border-radius: 0px;
+}
+
+.highlight {
+	border-radius: 6px;
+}
+
+pre, code {
+	border: 0px;
+}
+
+/* Fix font size for index.html */
 .home {
 	font-size: 20px;
 }
@@ -32,10 +71,7 @@ li .post-meta {
 	font-size: 15px;
 }
 
-article {
-	background: #FFF;
-}
-
+/* Change footer to play nicely with skyline */
 .site-footer {
 	background: #000;
 	border-top: 0;

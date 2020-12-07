@@ -6,7 +6,7 @@ permalink: /about/
 
 Hi! My name is Johannes Stutz, I usually go with Hannes. I am learning and writing about how machines can learn. My interest in all things AI began with my fascination with Tesla's Autopilot software. Would it actually be possible for a car to drive itself in every situation?
 
-I wanted to learn more about the technology behind this and started taking online courses. I don't have a background in coding or computer science, so the learning curve can be a bit steep at times. Nevertheless, I'm enjoying the ride.
+I wanted to learn more about the technology behind this and have embarked on a journey into machine learning. Since I don't have a professional background in coding or computer science, I go with "learning by doing", an approach especially endorsed and offered by [fast.ai's](https://www.fast.ai/) great - and free - online courses.
 
 I work as a pilot for a large airline. I think digitalization and AI can help aviation become more sustainable and even safer. But from my experience with partially automated systems, I also know how important it is to keep the human in the loop. AI should not replace humans, it should support them!
 
