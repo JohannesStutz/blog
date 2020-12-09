@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Getting started with the fast.ai course | Deep Learning Berlin</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Getting started with the fast.ai course" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="How to make the most out of the free deep learning course from fast.ai" />
+<meta property="og:description" content="How to make the most out of the free deep learning course from fast.ai" />
+<link rel="canonical" href="https://deeplearning.berlin/fastai/getting%20started/online%20courses/2020/12/09/Getting-started-with-fastai.html" />
+<meta property="og:url" content="https://deeplearning.berlin/fastai/getting%20started/online%20courses/2020/12/09/Getting-started-with-fastai.html" />
+<meta property="og:site_name" content="Deep Learning Berlin" />
+<meta property="og:image" content="https://deeplearning.berlin/images/articles/getting-started-fastai.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-09T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"https://deeplearning.berlin/fastai/getting%20started/online%20courses/2020/12/09/Getting-started-with-fastai.html","@type":"BlogPosting","headline":"Getting started with the fast.ai course","dateModified":"2020-12-09T00:00:00-06:00","datePublished":"2020-12-09T00:00:00-06:00","image":"https://deeplearning.berlin/images/articles/getting-started-fastai.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplearning.berlin/fastai/getting%20started/online%20courses/2020/12/09/Getting-started-with-fastai.html"},"description":"How to make the most out of the free deep learning course from fast.ai","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://deeplearning.berlin/feed.xml" title="Deep Learning Berlin" /><!--<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">-->
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+<link rel="manifest" href="/images/icons/site.webmanifest">
+<link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg" color="#5bbad5"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/"><img src="/images/icons/bear-yellow-transp-bg.png"/>Deep Learning Berlin</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About Me</a><a class="page-link" href="/search/">Search</a><a class="page-link" href="/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Getting started with the fast.ai course</h1><p class="page-description">How to make the most out of the free deep learning course from fast.ai</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-12-09T00:00:00-06:00" itemprop="datePublished">
+        Dec 9, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      8 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/categories/#fastai">fastai</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#getting started">getting started</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#online courses">online courses</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Who-is-this-article-for?">Who is this article for? </a></li>
+<li class="toc-entry toc-h1"><a href="#About-fast.ai">About fast.ai </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#What-is-covered-in-the-course?">What is covered in the course? </a></li>
+<li class="toc-entry toc-h2"><a href="#Should-I-get-the-book?">Should I get the book? </a></li>
+<li class="toc-entry toc-h2"><a href="#Do-I-need-to-know-Python?">Do I need to know Python? </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#I'm-in!-How-do-I-begin?">I&#39;m in! How do I begin? </a></li>
+<li class="toc-entry toc-h1"><a href="#Some-advice">Some advice </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Watch-the-videos-twice">Watch the videos twice </a></li>
+<li class="toc-entry toc-h3"><a href="#Take-notes!">Take notes! </a></li>
+<li class="toc-entry toc-h3"><a href="#Don't-get-stuck-on-one-thing-that-you-don't-understand">Don&#39;t get stuck on one thing that you don&#39;t understand </a></li>
+<li class="toc-entry toc-h3"><a href="#Do-the-questionnaire">Do the questionnaire </a></li>
+<li class="toc-entry toc-h3"><a href="#Use-other-sources">Use other sources </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#What-can-I-do-after-the-8-lessons?">What can I do after the 8 lessons? </a></li>
+<li class="toc-entry toc-h1"><a href="#Thank-you-for-reading">Thank you for reading </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-12-09-Getting-started-with-fastai.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Who-is-this-article-for?">
+<a class="anchor" href="#Who-is-this-article-for?" aria-hidden="true"><span class="octicon octicon-link"></span></a>Who is this article for?<a class="anchor-link" href="#Who-is-this-article-for?"> </a>
+</h1>
+<p>Welcome! If you're reading this article, I assume you have heard about the terms deep learning, machine learning or artificial intelligence. Maybe you are not too sure what they mean specifically, but you are interested. Maybe you've been searching for a while to finally learn about these concepts, but are overwhelmed by the magnitude of courses, books and software available.</p>
+<p>Whether you are a software developer planning to add a new skillset, a student wanting to broaden your horizon, or an expert in a completely different field and you want to apply AI in your company or project: The fast.ai online course can be great for you to get started, and it's completely free!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://raw.githubusercontent.com/JohannesStutz/blog/master/images/articles/2012-12-09-getting-started/fastbook.jpg" alt="Fastbook"></p>
+<h1 id="About-fast.ai">
+<a class="anchor" href="#About-fast.ai" aria-hidden="true"><span class="octicon octicon-link"></span></a>About fast.ai<a class="anchor-link" href="#About-fast.ai"> </a>
+</h1>
+<p><a href="https://www.fast.ai">fast.ai</a> is an organisation committed to make deep learning more accessible. It was founded and is run by Jeremy Howard and Rachel Thomas, both distinguished data scientists.</p>
+<p>They offer four major elements that can help you get into deep learning.</p>
+<ul>
+<li>
+<a href="https://docs.fast.ai/">fastai</a> (notice the missing dot), a software library that allows creating powerful deep learning models with few lines of code, while nonetheless being very customizable.</li>
+<li>A <a href="https://course.fast.ai/">free online course</a> based on the library.</li>
+<li>A <a href="https://www.amazon.com/Deep-Learning-Coders-fastai-PyTorch/dp/1492045527">book</a> that is designed to go hand in hand with the course. It's available as a paper book, as an e-book or even for free on <a href="https://github.com/fastai/fastbook">Github</a>.</li>
+<li>A <a href="https://forums.fast.ai/">forum</a> with a very helpful community.</li>
+</ul>
+<p>For me, what really sets fast.ai apart from other online courses, is their practical approach:</p>
+<blockquote>
+<p>We always teaching through examples. We ensure that there is a context and a purpose that you can understand intuitively, rather than starting with algebraic symbol manipulation.</p>
+</blockquote>
+<p>This does not mean that the foundations are not covered (they are!), but the order is different than in other books or courses, where you start with basic tools and only get to usable applications at the end of the course - if ever.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-is-covered-in-the-course?">
+<a class="anchor" href="#What-is-covered-in-the-course?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is covered in the course?<a class="anchor-link" href="#What-is-covered-in-the-course?"> </a>
+</h2>
+<p><img src="https://raw.githubusercontent.com/JohannesStutz/blog/master/images/articles/2012-12-09-getting-started/course-content.jpg" alt="Classify pet breeds, Predict bulldozer prizes, Recommend movies, Identify moview review sentiment"></p>
+<p>The course covers major applications of deep learning. There is a certain focus on computer vision, but the other topics like tabular data, natural language processing (NLP) and recommender systems are explained very well. You will be able to create very well performing models in all of these areas, and as early as lecture 2 you can create a working web app that can recognize certain bears (or anything that you choose).</p>
+<p>Later in the course, you will learn the foundations of deep learning. You'll write code for <em>stochastic gradient descent</em> and <em>activation functions</em> from scratch. Don't worry if you never have heard about these, it's explained very well. You will dig deeper into PyTorch, the underlying software of fastai.</p>
+<p>Also, there is a lecture (and a chapter) on Data Ethics. It is taught by Rachel Thomas and will give you a lot of food for thought. I think it's great that fastai encourages you to think about the possible implications of your work early on.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Should-I-get-the-book?">
+<a class="anchor" href="#Should-I-get-the-book?" aria-hidden="true"><span class="octicon octicon-link"></span></a>Should I get the book?<a class="anchor-link" href="#Should-I-get-the-book?"> </a>
+</h2>
+<p>Since the book is freely available online in the form of notebooks, you might be wondering if you should get the printed book anyway. My opinion: If you can afford it - yes, you absolutely should get it! Its layout is beautiful, which makes it easier to read than the online version. Also, I personally just like to read a physical copy, my attention span is longer and I tend to take it more seriously.</p>
+<p>That being said, you certainly can work with the free online version. It has the added benefit that you will always have the latest version, which is up to date and where bugs are fixed (and there are a few in the book).</p>
+<p><img src="https://raw.githubusercontent.com/JohannesStutz/blog/master/images/articles/2012-12-09-getting-started/fastbook-open.jpg" alt="Fastbook open"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Do-I-need-to-know-Python?">
+<a class="anchor" href="#Do-I-need-to-know-Python?" aria-hidden="true"><span class="octicon octicon-link"></span></a>Do I need to know Python?<a class="anchor-link" href="#Do-I-need-to-know-Python?"> </a>
+</h2>
+<p>Yes - or any other language. The book is called "Deep Learning for Coders", so it will not explain every line of code in detail or teach Python from scratch. In fact, the <a href="https://course.fast.ai/">course website</a> states:</p>
+<blockquote>
+<p>The only prerequisite is that you know how to code (a year of experience is enough), preferably in Python, and that you have at least followed a high school math course.</p>
+</blockquote>
+<p>However, you don't have to be an expert. When I first started with the course, I only had a few weeks of experience with Python. I did however have some (very basic) experience with web languages like JavaScript and PHP, that helped me pick up Python pretty quickly. If you know any programming language, you won't have a problem, since Python is rather accessible and has an easy syntax. If you don't have any programming experience, I recommend investing a few weeks to learn the basics of Python before you tackle fastai. There are wonderful tutorials available for free.</p>
+<p><img src="https://raw.githubusercontent.com/JohannesStutz/blog/master/images/articles/2012-12-09-getting-started/python.jpg" alt="Python"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="I'm-in!-How-do-I-begin?">
+<a class="anchor" href="#I'm-in!-How-do-I-begin?" aria-hidden="true"><span class="octicon octicon-link"></span></a>I'm in! How do I begin?<a class="anchor-link" href="#I'm-in!-How-do-I-begin?"> </a>
+</h1>
+<p>With lesson 1! 😊 You really can get started right away, the interactive content runs on ready-to-use and free platforms like Google Colab, so you don't have to spend time setting up your own machine.</p>
+<p>The <a href="https://course.fast.ai/">course website</a> gives you an overview of the course (you should read it in addition to this article), then you can start with lesson 1.</p>
+<p>I enjoyed combining the videos and the book. After every lesson, I ran the notebooks on Colab and then read the chapters in the book. The chapters are very similar to the video lessons, but I think it helps consuming the content in a different medium and being able to go back a few pages if you want to read something again.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Some-advice">
+<a class="anchor" href="#Some-advice" aria-hidden="true"><span class="octicon octicon-link"></span></a>Some advice<a class="anchor-link" href="#Some-advice"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Watch-the-videos-twice">
+<a class="anchor" href="#Watch-the-videos-twice" aria-hidden="true"><span class="octicon octicon-link"></span></a>Watch the videos twice<a class="anchor-link" href="#Watch-the-videos-twice"> </a>
+</h3>
+<p>I recommend watching the videos twice. On the first view, don't focus on the details too much, just get an overview of the topics covered and take notes while doing so. This is especially true for the later lessons that contain much more code.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Take-notes!">
+<a class="anchor" href="#Take-notes!" aria-hidden="true"><span class="octicon octicon-link"></span></a>Take notes!<a class="anchor-link" href="#Take-notes!"> </a>
+</h3>
+<p>Taking notes was a gamechanger for me. I think it's the best way to stay active during the videos, and over time the notes will serve as a central knowledge repository. Also, it's great to have a place to jot down your questions, so you can try and answer them later!</p>
+<p>I keep notes in Microsoft OneNote, you can of course use any other application or paper. I created a template based on this awesome <a href="https://forums.fast.ai/t/how-to-do-fastai-study-plans-learning-strategies/39473?u=johannesstutz">forum post</a>. The template contains following points:</p>
+<ul>
+<li>
+<strong>Key Points</strong> from the lecture</li>
+<li>
+<strong>Advice</strong> from Jeremy </li>
+<li>
+<strong>To-Do</strong> challenges from the further research section of the chapter, ideas for projects</li>
+<li>
+<strong>Reading &amp; Exploring</strong> papers that are mentioned, stuff you find on the web but don't have time for at the moment</li>
+<li>
+<strong>Questions</strong> that arise during the lecture</li>
+<li>as the last point, I copy &amp; paste the <strong>questionnaire</strong>.</li>
+</ul>
+<p>Please read the above mentioned forum post for details on each section, it's a really good system.</p>
+<p>These notes are meant to be used not just once, but you should refine them and work with them continuously. They can serve you as your go-to resource every time you study. All your open questions, your project ideas, and of course lots of knowledge can live there.</p>
+<p><img src="https://raw.githubusercontent.com/JohannesStutz/blog/master/images/articles/2012-12-09-getting-started/coffe-notebook.jpg" alt="Coffee &amp; Notebook"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Don't-get-stuck-on-one-thing-that-you-don't-understand">
+<a class="anchor" href="#Don't-get-stuck-on-one-thing-that-you-don't-understand" aria-hidden="true"><span class="octicon octicon-link"></span></a>Don't get stuck on one thing that you don't understand<a class="anchor-link" href="#Don't-get-stuck-on-one-thing-that-you-don't-understand"> </a>
+</h3>
+<p>This is an important point and I think Jeremy mentions it as well. You don't have to understand every detail right away. It's often better to move on and revisit the part you didn't quite get later.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Do-the-questionnaire">
+<a class="anchor" href="#Do-the-questionnaire" aria-hidden="true"><span class="octicon octicon-link"></span></a>Do the questionnaire<a class="anchor-link" href="#Do-the-questionnaire"> </a>
+</h3>
+<p>Take the time and answer every question in the questionnaire. This might take a while, but it makes sure that you really understood all important concepts. You can find answers to most questions in the forum.</p>
+<p>Additionally, I can recommend <a href="https://aiquizzes.com/">aiquizzes.com</a>, where many questions and their answers are made available together with the relevant part of the lecture. You can use this for <a href="https://en.wikipedia.org/wiki/Spaced_repetition">spaced repetition learning</a>, the website will remind you when older questions need reviewing, it's great.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Use-other-sources">
+<a class="anchor" href="#Use-other-sources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use other sources<a class="anchor-link" href="#Use-other-sources"> </a>
+</h3>
+<p>Fastai, while being excellent, is not the only source of wisdom. I often google for concepts I don't quite get. More often than not I find a blog post, a stack overflow answer or a video explaining it very well or with a different approach than Jeremy.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="What-can-I-do-after-the-8-lessons?">
+<a class="anchor" href="#What-can-I-do-after-the-8-lessons?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What can I do after the 8 lessons?<a class="anchor-link" href="#What-can-I-do-after-the-8-lessons?"> </a>
+</h1>
+<p>The course covers only a part of the book. There will be a part 2 of the course that covers the more advanced chapters, but as of now (December 2020) there is no release date announced. If you want to dig deeper into the material, you should not wait for the course but work through the book by your own.</p>
+<p>In addition, I'd suggest picking a project and make it as good as you can. Go on the forums and see if you can help others, and ask for advice. Write about your journey in your own blog - like the one whose first post you are reading here 😊</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Thank-you-for-reading">
+<a class="anchor" href="#Thank-you-for-reading" aria-hidden="true"><span class="octicon octicon-link"></span></a>Thank you for reading<a class="anchor-link" href="#Thank-you-for-reading"> </a>
+</h1>
+<p>Since you made it this far, I hope you found this article interesting and I could get you excited for fast.ai! I really can recommend taking the course and reading the book, and if you put in the time you will see amazing results soon.
+Let me know if you have any questions or found this article helpful. I'm on <a href="https://twitter.com/daflowjoe">Twitter</a>, I'd be happy to hear from you there or via mail at <a href="mailto:hannes@deeplearning.berlin">hannes@deeplearning.berlin</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="JohannesStutz/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/fastai/getting%20started/online%20courses/2020/12/09/Getting-started-with-fastai.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>I&#39;m Hannes, join me in my self-taught journey into deep learning.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/johannesstutz" title="johannesstutz"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/daflowjoe" title="daflowjoe"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
