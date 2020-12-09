@@ -74,11 +74,16 @@ pre, code {
 
 /* Fix font size for index.html */
 .home {
-	font-size: 20px;
+	font-size: 18px;
 }
 
 li .post-meta {
 	font-size: 15px;
+}
+
+/* Reduce font size in normal text a bit */
+.post-content p {
+	font-size: 18px;
 }
 
 /* Change footer to play nicely with skyline */
