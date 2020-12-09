@@ -507,9 +507,12 @@ table td { background-color: #fdfdfd; }
 pre, code { border: 0px; }
 
 /* Fix font size for index.html */
-.home { font-size: 20px; }
+.home { font-size: 18px; }
 
 li .post-meta { font-size: 15px; }
+
+/* Reduce font size in normal text a bit */
+.post-content p { font-size: 18px; }
 
 /* Change footer to play nicely with skyline */
 .site-footer { background: #000; border-top: 0; padding: 45px 0; }
