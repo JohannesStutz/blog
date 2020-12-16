@@ -88,7 +88,7 @@ pre, code {
 	border: 0px;
 }
 
-/* Fix font size for index.html */
+/* Tweaks to font size etc.*/
 .home {
 	font-size: 18px;
 }
@@ -96,6 +96,10 @@ pre, code {
 li .post-meta {
 	font-size: 15px;
 }
+
+h2 { margin-top: 2.5rem; }
+
+h3, h4 { margin-top: 2rem; }
 
 /* Reduce font size in normal text a bit */
 .post-content p, .post-content li {
