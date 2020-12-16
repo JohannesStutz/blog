@@ -13,16 +13,19 @@
 /* Set site-wide subtle background pattern */
 /* Background pattern from Toptal Subtle Patterns */
 body {
-	background: #fdfdfd url("/images/grey.png"); 
+	background: #fdfdfd; 
+	/* For the grey pattern, use:
+	url("/images/grey.png") */
 }
 
-/* White background and shadow for articles and home page */
+/*  */
 article, .home {
-	background: #fefefe;
+	background: #fdfdfd;
+	/* White background and shadow for articles and home page
 	border: 1px solid #e8e8e8;
 	border-radius: 4px;
 	box-shadow: 0 3px 6px rgba(149,157,165,0.15) !important;
-	padding: 20px 40px;
+	padding: 20px 40px;*/
 }
 
 /* Reduce padding for mobile devices */
@@ -52,10 +55,10 @@ article, .home {
 
 /* Add skyline background at the bottom */
 .page-content {
-	background-image: url("/images/skyline_v2.png");
+	/*background-image: url("/images/skyline_v2.png");
 	background-size: 85%;
 	background-repeat: no-repeat;
-	background-position: center bottom;
+	background-position: center bottom;*/
 	padding: 30px 0 10% 0;
 }
 
