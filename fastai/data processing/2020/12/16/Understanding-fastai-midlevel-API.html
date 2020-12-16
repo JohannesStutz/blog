@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Understanding fastai’s Midlevel API | Deep Learning Berlin</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Understanding fastai’s Midlevel API" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="How to customize your data processing. Exploring Transforms, Pipelines, TfmdLists, Datasets" />
+<meta property="og:description" content="How to customize your data processing. Exploring Transforms, Pipelines, TfmdLists, Datasets" />
+<link rel="canonical" href="https://deeplearning.berlin/fastai/data%20processing/2020/12/16/Understanding-fastai-midlevel-API.html" />
+<meta property="og:url" content="https://deeplearning.berlin/fastai/data%20processing/2020/12/16/Understanding-fastai-midlevel-API.html" />
+<meta property="og:site_name" content="Deep Learning Berlin" />
+<meta property="og:image" content="https://deeplearning.berlin/images/articles/2020-12-16-midlevel-api/datasets-title.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-16T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"https://deeplearning.berlin/fastai/data%20processing/2020/12/16/Understanding-fastai-midlevel-API.html","@type":"BlogPosting","headline":"Understanding fastai’s Midlevel API","dateModified":"2020-12-16T00:00:00-06:00","datePublished":"2020-12-16T00:00:00-06:00","image":"https://deeplearning.berlin/images/articles/2020-12-16-midlevel-api/datasets-title.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplearning.berlin/fastai/data%20processing/2020/12/16/Understanding-fastai-midlevel-API.html"},"description":"How to customize your data processing. Exploring Transforms, Pipelines, TfmdLists, Datasets","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://deeplearning.berlin/feed.xml" title="Deep Learning Berlin" /><!--<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">-->
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+<link rel="manifest" href="/images/icons/site.webmanifest">
+<link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg" color="#5bbad5"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/"><img src="/images/icons/bear-yellow-transp-bg.png"/>Deep Learning Berlin</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About Me</a><a class="page-link" href="/search/">Search</a><a class="page-link" href="/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Understanding fastai&#39;s Midlevel API</h1><p class="page-description">How to customize your data processing. Exploring Transforms, Pipelines, TfmdLists, Datasets</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-12-16T00:00:00-06:00" itemprop="datePublished">
+        Dec 16, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      8 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/categories/#fastai">fastai</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#data processing">data processing</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/JohannesStutz/blog/tree/master/_notebooks/2020-12-16-Understanding-fastai-midlevel-API.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/JohannesStutz/blog/master?filepath=_notebooks%2F2020-12-16-Understanding-fastai-midlevel-API.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/JohannesStutz/blog/blob/master/_notebooks/2020-12-16-Understanding-fastai-midlevel-API.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Transforms">Transforms </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Type-dispatch">Type dispatch </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Pipeline">Pipeline </a></li>
+<li class="toc-entry toc-h2"><a href="#TfmdLists">TfmdLists </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Training-and-validation-sets">Training and validation sets </a></li>
+<li class="toc-entry toc-h3"><a href="#Don't-we-need-labels?">Don&#39;t we need labels? </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Datasets">Datasets </a></li>
+<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-12-16-Understanding-fastai-midlevel-API.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Even after going through the course and book, I didn't feel comfortable with the numerous classes and methods that fastai offers for data processing. I felt that it would be easy once I understood it, but it just didn't <em>click</em> right away. So here I try to present the most important classes and why they are useful.</p>
+<p>This is by no means a complete overview, but just an exploration with minimal examples.</p>
+<p>For a deeper dive, please check out
+<a href="https://github.com/fastai/fastbook/blob/master/11_midlevel_data.ipynb">chapter 11 of fastbook</a>,
+Wayde Gilliam's <a href="https://ohmeow.com/posts/2020/04/11/finding-datablock-nirvana-part-1.html">awesome blog post</a>,
+or Zach Mueller's <a href="https://www.youtube.com/watch?v=bw4PRyxa-y4">walk with fastai2</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Transforms">
+<a class="anchor" href="#Transforms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transforms<a class="anchor-link" href="#Transforms"> </a>
+</h2>
+<p><img src="/images/copied_from_nb/../images/articles/2020-12-16-midlevel-api/transforms.png" alt=""></p>
+<p>A Transform in general is an <em>object that can be called</em> and has an optional <code>setup</code> method that initializes an inner state, and an optional <code>decode</code> method that will reverse the function.
+</p>
+<div class="flash">
+    <svg class="octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+    <strong>Note: </strong><code>Transforms</code> are usually applied on tuples.
+</div>
+In general, our data is always in tuples of <code>(input,target)</code>, although you can have more than one input or one target. When applying a transform, it should be applied to the elements of the tuple separately.
+<p>When you only want to implement the encoding behaviour of a transform, it can be defined via the <code>@Transform</code> decorator:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@Transform</span>
+<span class="k">def</span> <span class="nf">lowercase</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">lowercase</span><span class="p">(</span><span class="s2">"Hello, Dear Reader"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'hello, dear reader'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Type-dispatch">
+<a class="anchor" href="#Type-dispatch" aria-hidden="true"><span class="octicon octicon-link"></span></a>Type dispatch<a class="anchor-link" href="#Type-dispatch"> </a>
+</h3>
+<p>Transforms can be defined so they apply only to certain types. This concept is called <em>type dispatch</em> and is provided by <a href="https://fastcore.fast.ai/dispatch.html">fastcore</a>, which I'll cover in a future post :-)</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@Transform</span>
+<span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">square</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mf">3.</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(9, 3.0)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice the type annotation for <code>x</code>. In this case, this is not merely a helpful annotation like in pure Python, but it actually changes the behaviour of the function! The <code>square</code> transform is only applied to elements of the type <code>int</code>. When we don't define the type, a transform is applied on all types.</p>
+<p>If you want to also define the <code>setup</code> and <code>decode</code> methods, you can inherit from <code>Transform</code>:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">DumbTokenizer</span><span class="p">(</span><span class="n">Transform</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="n">vocab</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">char</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">items</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">text</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c2i</span> <span class="o">=</span> <span class="p">{</span><span class="n">char</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vocab</span><span class="p">)}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">char</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vocab</span><span class="p">)}</span>
+    <span class="k">def</span> <span class="nf">encodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> 
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">c2i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">char</span><span class="p">,</span> <span class="mi">999</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">decodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s1">' ? '</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="s2">"Bonjour"</span><span class="p">,</span> <span class="s2">"Guten Tag"</span><span class="p">,</span> <span class="s2">"Konnichiwa"</span><span class="p">]</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">DumbTokenizer</span><span class="p">()</span>
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="s2">"Hello!"</span><span class="p">)</span>
+<span class="n">encoded</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[9, 6, 2, 2, 4, 999]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now this is a representation that a machine learning model can work with. But we humans can't read it anymore. To display the data and be able to analyze it, call <code>decode</code> on the result:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'Hello ? '</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So here we defined a (very dumb) tokenizer. The <code>setups</code> method receives a bunch of items that we pass in. It creates a vocabulary of all characters that appear in <code>items</code>. In <code>encodes</code> we transform each character to a number in an index. When the character is not found in the vocabulary, it is replaced with an <code>999</code> token. <code>decodes</code> reverses this transform as good as it can.</p>
+<p>By the way: you might have noticed that in the <code>DumbTokenizer</code> class we defined the methods <code>setups</code>, <code>encodes</code> and <code>decodes</code>, but on the instance <code>tokenizer</code> we call methods with slightly different names (<code>setup</code>, <code>decode</code>) or even the instance directly: <code>tokenizer(...)</code>. The reason for this is that fastai applies some magic in the background, the book says that the <code>setup</code> method does some additional work before and after calling <code>setups</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Pipeline">
+<a class="anchor" href="#Pipeline" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pipeline<a class="anchor-link" href="#Pipeline"> </a>
+</h2>
+<p><img src="/images/copied_from_nb/../images/articles/2020-12-16-midlevel-api/pipeline.png" alt=""></p>
+<p>A <code>Pipeline</code> is just an easy way to apply a list of transforms, in order.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tfms</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="n">lowercase</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">])</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">tfms</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">)</span>
+<span class="n">encoded</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[17, 6, 2, 2, 4, 11, 5, 4, 0, 2, 999, 999]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>Pipeline</code> also supports decoding of an item:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tfms</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'hello worl ?  ? '</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Because we didn't define a <code>decodes</code> method for <code>lowercase</code>, this transform cannot be reversed. The decoded result consists only of lowercase letters.</p>
+<p>Notice the missing letter <code>d</code> in the decoded representation. Since there was no <code>d</code> in the initial texts, the tokenizer replaced it with the token for "unkown", 999.</p>
+<p>What Pipeline doesn't provide is support for the setup of the transforms. When you want to apply a pipeline of transforms on a list of data, <code>TfmdLists</code> comes to the rescue.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="TfmdLists">
+<a class="anchor" href="#TfmdLists" aria-hidden="true"><span class="octicon octicon-link"></span></a>TfmdLists<a class="anchor-link" href="#TfmdLists"> </a>
+</h2>
+<p><img src="/images/copied_from_nb/../images/articles/2020-12-16-midlevel-api/tfmdlists.png" alt=""></p>
+<p>At first, your data is usually a set of raw items (like filenames or rows in a dataframe) to which you want to apply some transforms. To combine your <em>pipeline of transforms</em> with your set of <em>raw items</em>, use <code>TfmdLists</code>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="s2">"Bonjour"</span><span class="p">,</span> <span class="s2">"Guten Tag"</span><span class="p">,</span> <span class="s2">"Konnichiwa"</span><span class="p">]</span>
+<span class="n">tls</span> <span class="o">=</span> <span class="n">TfmdLists</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="p">[</span><span class="n">DumbTokenizer</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When initialized, TfmdLists will call the <code>setup</code> method of each Transform in order, providing it with all the items of the previous Transform. To get the result of the pipeline on any raw element, just index into the <code>TfmdLists</code>:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">encoded</span> <span class="o">=</span> <span class="n">tls</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">encoded</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[8, 4, 14, 15, 4, 19, 0]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tls</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'Bonjour'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Training-and-validation-sets">
+<a class="anchor" href="#Training-and-validation-sets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Training and validation sets<a class="anchor-link" href="#Training-and-validation-sets"> </a>
+</h3>
+<p>The reason that <code>TfmdLists</code> is named with an <code>s</code> (lists in plural) is that it can handle a training and a validation set. Use the <code>splits</code> argument to pass</p>
+<ul>
+<li>the indices of the elements that should be in the training set</li>
+<li>the indices of the elements that should be in the validation set.</li>
+</ul>
+<p>We will just do this by hand in our toy example. The training set will be "Hello" and "Guten Tag", the other two go in the validation set.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="s2">"Bonjour"</span><span class="p">,</span> <span class="s2">"Guten Tag"</span><span class="p">,</span> <span class="s2">"Konnichiwa"</span><span class="p">]</span>
+<span class="n">splits</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
+<span class="n">tls</span> <span class="o">=</span> <span class="n">TfmdLists</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="p">[</span><span class="n">lowercase</span><span class="p">,</span> <span class="n">DumbTokenizer</span><span class="p">],</span> <span class="n">splits</span><span class="o">=</span><span class="n">splits</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can then access the sets through the <code>train</code> and <code>valid</code> attributes:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">encoded</span> <span class="o">=</span> <span class="n">tls</span><span class="o">.</span><span class="n">train</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">encoded</span><span class="p">,</span> <span class="n">tls</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>([3, 7, 1, 6, 4, 8, 1, 0, 3], 'guten tag')</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's look at at word in the validation set:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">encoded</span> <span class="o">=</span> <span class="n">tls</span><span class="o">.</span><span class="n">valid</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">encoded</span><span class="p">,</span> <span class="n">tls</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>([999, 2, 4, 999, 2, 7, 999], ' ? on ? ou ? ')</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ouch, what happened to our "Bonjour" here? When <code>TfmdLists</code> automatically called the <code>setup</code> method of the transforms, it only used the items of the training set. Since there was no <code>b</code>, <code>j</code> or <code>r</code> in our training data, the tokenizer treats them as unknown characters.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash flash-warn">
+    <svg class="octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg>
+    <strong>Important: </strong>The <code>setup</code> methods of the transforms receive only the items of the training set.
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Don't-we-need-labels?">
+<a class="anchor" href="#Don't-we-need-labels?" aria-hidden="true"><span class="octicon octicon-link"></span></a>Don't we need labels?<a class="anchor-link" href="#Don't-we-need-labels?"> </a>
+</h3>
+<p>Maybe you noticed that we haven't dealt with tuples until now. We only have transformed our input, we don't have a target yet.</p>
+<p><code>TfmdLists</code> is useful when you built a custom <code>Transform</code> that performs all the data preprocessing and returns tuples of inputs and targets. Then you can just create a <code>DataLoaders</code> object with the <code>dataloaders</code> method.</p>
+<p>Usually however, you will have two parallel pipelines of transforms - one to convert your raw items to inputs, and one to convert raw items to targets (ie labels). To do this we can use <code>Datasets</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Datasets">
+<a class="anchor" href="#Datasets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Datasets<a class="anchor-link" href="#Datasets"> </a>
+</h2>
+<p><img src="/images/copied_from_nb/../images/articles/2020-12-16-midlevel-api/datasets.png" alt=""></p>
+<p>To complete our quick tour through fastai's midlevel API, we look at the <code>Datasets</code> class. It applies two (or more) pipelines in parallel to a list of raw items and builds a tuple of the results. It performs very much like a <code>TfmdLists</code> object, in that it</p>
+<ul>
+<li>automatically does the setup of all Transforms</li>
+<li>supports training and validation sets</li>
+<li>supports indexing</li>
+</ul>
+<p>The main difference is: When we index into it, it returns a tuple with the results of each pipeline.</p>
+<p>Let's look at how to use it. For this toy example, let's pretend we want to classify whether a text contains at least one space (that's a dumb example, I know). For this we create a little labelling function in the form of a <code>Transform</code>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">SpaceLabeller</span><span class="p">(</span><span class="n">Transform</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">encodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="s1">' '</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">decodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_tfms</span> <span class="o">=</span> <span class="p">[</span><span class="n">lowercase</span><span class="p">,</span> <span class="n">DumbTokenizer</span><span class="p">]</span>
+<span class="n">y_tfms</span> <span class="o">=</span> <span class="p">[</span><span class="n">SpaceLabeller</span><span class="p">]</span>
+<span class="n">dsets</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="p">[</span><span class="n">x_tfms</span><span class="p">,</span> <span class="n">y_tfms</span><span class="p">],</span> <span class="n">splits</span><span class="o">=</span><span class="n">splits</span><span class="p">)</span>
+<span class="n">item</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">valid</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">item</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>([10, 14, 13, 13, 8, 2, 7, 8, 22, 0], 0)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dsets</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>('konnichiwa', False)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>At last, we can create a <code>DataLoaders</code> object from the <code>Datasets</code>. To enable processing on the GPU, two small tweaks are required. First, every item has to be converted to a tensor (often this will happen earlier, as one of the transforms in the pipeline). Second, we use a fastai function called <code>pad_input</code> to make every sequence the same length, since a tensor requires regular shape.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dls</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">dataloaders</span><span class="p">(</span><span class="n">bs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">after_item</span><span class="o">=</span><span class="n">tensor</span><span class="p">,</span> <span class="n">before_batch</span><span class="o">=</span><span class="n">pad_input</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dls</span><span class="o">.</span><span class="n">train_ds</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(#2) [([7, 4, 11, 11, 14], 0),([6, 20, 19, 4, 13, 999, 19, 0, 6], 1)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is now a ready-for-training dataloader!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conclusion">
+<a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
+</h2>
+<p>We looked at how to customize every step of the data transformation pipeline. As mentioned in the beginning, this is not a complete description of all the features available, but a good starting point for experimentation. I hope this was helpful to you, let me know if you have questions or suggestions for improvement at <a href="mailto:hannes@deeplearning.berlin">hannes@deeplearning.berlin</a> or <a href="https://twitter.com/daflowjoe">@daflowjoe</a> on Twitter.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><a class="u-url" href="/fastai/data%20processing/2020/12/16/Understanding-fastai-midlevel-API.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Join me in my self-taught journey into deep learning.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/johannesstutz" title="johannesstutz"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/daflowjoe" title="daflowjoe"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
