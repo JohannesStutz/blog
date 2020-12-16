@@ -517,9 +517,9 @@ pre, code { border: 0px; }
 
 li .post-meta { font-size: 15px; }
 
-h2 { margin-top: 2.5rem; }
+h2 { margin-top: 3rem !important; }
 
-h3, h4 { margin-top: 2rem; }
+h3, h4 { margin-top: 2.5rem !important; }
 
 /* Reduce font size in normal text a bit */
 .post-content p, .post-content li { font-size: 18px; }
