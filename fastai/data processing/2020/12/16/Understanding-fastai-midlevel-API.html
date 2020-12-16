@@ -128,6 +128,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#Transforms">Transforms </a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#Type-dispatch">Type dispatch </a></li>
+<li class="toc-entry toc-h3"><a href="#A-more-complex-transform">A more complex transform </a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#Pipeline">Pipeline </a></li>
@@ -167,14 +168,36 @@ or Zach Mueller's <a href="https://www.youtube.com/watch?v=bw4PRyxa-y4">walk wit
 <h2 id="Transforms">
 <a class="anchor" href="#Transforms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transforms<a class="anchor-link" href="#Transforms"> </a>
 </h2>
+<p><img src="/images/copied_from_nb/../images/articles/2020-12-16-midlevel-api/transforms-single.png" alt=""></p>
+<p>A Transform in general is an <em>object that can be called</em> (behaves like a function) and has an optional <code>setup</code> method that initializes an inner state, and an optional <code>decode</code> method that will reverse the function.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In general, our data is always in tuples of <code>(input,target)</code>, although you can have more than one input or one target. When applying a transform, it should be applied to the elements of the tuple separately.</p>
 <p><img src="/images/copied_from_nb/../images/articles/2020-12-16-midlevel-api/transforms.png" alt=""></p>
-<p>A Transform in general is an <em>object that can be called</em> and has an optional <code>setup</code> method that initializes an inner state, and an optional <code>decode</code> method that will reverse the function.
-</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
 <div class="flash">
     <svg class="octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
-    <strong>Note: </strong><code>Transforms</code> are usually applied on tuples.
+    <strong>Note: </strong>Transforms are usually applied on tuples.
 </div>
-In general, our data is always in tuples of <code>(input,target)</code>, although you can have more than one input or one target. When applying a transform, it should be applied to the elements of the tuple separately.
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>When you only want to implement the encoding behaviour of a transform, it can be defined via the <code>@Transform</code> decorator:</p>
 
 </div>
@@ -269,6 +292,9 @@ In general, our data is always in tuples of <code>(input,target)</code>, althoug
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice the type annotation for <code>x</code>. In this case, this is not merely a helpful annotation like in pure Python, but it actually changes the behaviour of the function! The <code>square</code> transform is only applied to elements of the type <code>int</code>. When we don't define the type, a transform is applied on all types.</p>
+<h3 id="A-more-complex-transform">
+<a class="anchor" href="#A-more-complex-transform" aria-hidden="true"><span class="octicon octicon-link"></span></a>A more complex transform<a class="anchor-link" href="#A-more-complex-transform"> </a>
+</h3>
 <p>If you want to also define the <code>setup</code> and <code>decode</code> methods, you can inherit from <code>Transform</code>:</p>
 
 </div>
@@ -380,7 +406,8 @@ In general, our data is always in tuples of <code>(input,target)</code>, althoug
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So here we defined a (very dumb) tokenizer. The <code>setups</code> method receives a bunch of items that we pass in. It creates a vocabulary of all characters that appear in <code>items</code>. In <code>encodes</code> we transform each character to a number in an index. When the character is not found in the vocabulary, it is replaced with an <code>999</code> token. <code>decodes</code> reverses this transform as good as it can.</p>
+<p>So here we defined a (very dumb) tokenizer. The <code>setups</code> method receives a bunch of items that we pass in. It creates a vocabulary of all characters that appear in <code>items</code>. In <code>encodes</code> we transform each character to a number in an index. When the character is not found in the vocabulary, it is replaced with a <code>999</code> token. <code>decodes</code> reverses this transform as good as it can.</p>
+<p>Notice the <code>?</code> in the decoded representation instead of <code>!</code>. Since there was no <code>!</code> in the initial texts, the tokenizer replaced it with the token for "unkown", 999. This is then replaced with <code>?</code> during decoding.</p>
 <p>By the way: you might have noticed that in the <code>DumbTokenizer</code> class we defined the methods <code>setups</code>, <code>encodes</code> and <code>decodes</code>, but on the instance <code>tokenizer</code> we call methods with slightly different names (<code>setup</code>, <code>decode</code>) or even the instance directly: <code>tokenizer(...)</code>. The reason for this is that fastai applies some magic in the background, the book says that the <code>setup</code> method does some additional work before and after calling <code>setups</code>.</p>
 
 </div>
@@ -478,7 +505,6 @@ In general, our data is always in tuples of <code>(input,target)</code>, althoug
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Because we didn't define a <code>decodes</code> method for <code>lowercase</code>, this transform cannot be reversed. The decoded result consists only of lowercase letters.</p>
-<p>Notice the missing letter <code>d</code> in the decoded representation. Since there was no <code>d</code> in the initial texts, the tokenizer replaced it with the token for "unkown", 999.</p>
 <p>What Pipeline doesn't provide is support for the setup of the transforms. When you want to apply a pipeline of transforms on a list of data, <code>TfmdLists</code> comes to the rescue.</p>
 
 </div>
@@ -490,7 +516,7 @@ In general, our data is always in tuples of <code>(input,target)</code>, althoug
 <h2 id="TfmdLists">
 <a class="anchor" href="#TfmdLists" aria-hidden="true"><span class="octicon octicon-link"></span></a>TfmdLists<a class="anchor-link" href="#TfmdLists"> </a>
 </h2>
-<p><img src="/images/copied_from_nb/../images/articles/2020-12-16-midlevel-api/tfmdlists.png" alt=""></p>
+<p><img src="/images/copied_from_nb/../images/articles/2020-12-16-midlevel-api/tfmdlists-items.png" alt=""></p>
 <p>At first, your data is usually a set of raw items (like filenames or rows in a dataframe) to which you want to apply some transforms. To combine your <em>pipeline of transforms</em> with your set of <em>raw items</em>, use <code>TfmdLists</code>.</p>
 
 </div>
@@ -735,7 +761,8 @@ In general, our data is always in tuples of <code>(input,target)</code>, althoug
 <a class="anchor" href="#Don't-we-need-labels?" aria-hidden="true"><span class="octicon octicon-link"></span></a>Don't we need labels?<a class="anchor-link" href="#Don't-we-need-labels?"> </a>
 </h3>
 <p>Maybe you noticed that we haven't dealt with tuples until now. We only have transformed our input, we don't have a target yet.</p>
-<p><code>TfmdLists</code> is useful when you built a custom <code>Transform</code> that performs all the data preprocessing and returns tuples of inputs and targets. Then you can just create a <code>DataLoaders</code> object with the <code>dataloaders</code> method.</p>
+<p><code>TfmdLists</code> is useful when you built a custom <code>Transform</code> that performs data preprocessing and returns tuples of inputs and targets. You can apply further transforms if you want, and then create a <code>DataLoaders</code> object with the <code>dataloaders</code> method.</p>
+<p><img src="/images/copied_from_nb/../images/articles/2020-12-16-midlevel-api/tfmdlists-tuples.png" alt=""></p>
 <p>Usually however, you will have two parallel pipelines of transforms - one to convert your raw items to inputs, and one to convert raw items to targets (ie labels). To do this we can use <code>Datasets</code>.</p>
 
 </div>
@@ -748,7 +775,7 @@ In general, our data is always in tuples of <code>(input,target)</code>, althoug
 <a class="anchor" href="#Datasets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Datasets<a class="anchor-link" href="#Datasets"> </a>
 </h2>
 <p><img src="/images/copied_from_nb/../images/articles/2020-12-16-midlevel-api/datasets.png" alt=""></p>
-<p>To complete our quick tour through fastai's midlevel API, we look at the <code>Datasets</code> class. It applies two (or more) pipelines in parallel to a list of raw items and builds a tuple of the results. It performs very much like a <code>TfmdLists</code> object, in that it</p>
+<p>To complete our quick tour through fastai's midlevel API, we look at the <code>Datasets</code> class. It applies two (or more) pipelines in parallel to a list of raw items and builds tuples of the results. It performs very much like a <code>TfmdLists</code> object, in that it</p>
 <ul>
 <li>automatically does the setup of all Transforms</li>
 <li>supports training and validation sets</li>
