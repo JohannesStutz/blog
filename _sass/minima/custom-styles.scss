@@ -127,21 +127,20 @@ h3, h4 { margin-top: 2.5rem !important; }
 }
 
 .Toast--warning .Toast-icon {
-	color: #fff;
-	background-color: #ef4e00; /* #f9c513; original yellow */
+	color: #fff !imporant;
+	background-color: #ef4e00 !imporant; /* #f9c513; original yellow */
 }
 
 .Toast--imporant .Toast-icon {
-	color: #24292e;
-	background-color: #f9c513;
+	color: #24292e !imporant;
+	background-color: #f9c513 !imporant;
 }
 
 .Toast--tip .Toast-icon {
-	color: #24292e;
-	background-color: #00ac00;
+	background-color: #00ac00 !imporant;
 }
 
 .Toast-icon {
-	color: #fff;
-	background-color: #0366d6;
+	color: #fff !imporant;
+	background-color: #0366d6 !imporant;
 }
