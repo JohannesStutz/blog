@@ -532,14 +532,14 @@ h3, h4 { margin-top: 2.5rem !important; }
 .site-footer a { color: #828282; }
 
 /* Define boxes */
-.Toast { margin: 32px 16px; }
+.Toast { margin: 32px 16px !important; }
 
-.Toast--warning .Toast-icon { color: #fff; background-color: #ef4e00; /* #f9c513; original yellow */ }
+.Toast--warning .Toast-icon { color: #fff !important; background-color: #ef4e00 !important; /* #f9c513; original yellow */ }
 
-.Toast--imporant .Toast-icon { color: #24292e; background-color: #f9c513; }
+.Toast--imporant .Toast-icon { color: #24292e !important; background-color: #f9c513 !important; }
 
-.Toast--tip .Toast-icon { color: #24292e; background-color: #00ac00; }
+.Toast--tip .Toast-icon { background-color: #00ac00 !important; }
 
-.Toast-icon { color: #fff; background-color: #0366d6; }
+.Toast-icon { color: #fff !important; background-color: #0366d6 !important; }
 
 /*# sourceMappingURL=style.css.map */
