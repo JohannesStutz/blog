@@ -483,7 +483,7 @@ p code { font-size: 19px; }
 body { background: #fdfdfd; /* For the grey pattern, use: url("/images/grey.png") */ }
 
 /*  */
-article, .home { background: #fdfdfd; /* White background and shadow for articles and home page border: 1px solid #e8e8e8; border-radius: 4px; box-shadow: 0 3px 6px rgba(149,157,165,0.15) !important; padding: 20px 40px;*/ }
+article, .home { /* White background and shadow for articles and home page border: 1px solid #e8e8e8; border-radius: 4px; box-shadow: 0 3px 6px rgba(149,157,165,0.15) !important; padding: 20px 40px;*/ }
 
 /* Reduce padding for mobile devices */
 .wrapper { padding-right: 0px; padding-left: 0px; }
@@ -530,5 +530,16 @@ h3, h4 { margin-top: 2.5rem !important; }
 .social-media-list li a, .pagination li a { background: #ddd; border: 1px solid #bbb; }
 
 .site-footer a { color: #828282; }
+
+/* Define boxes */
+.Toast { margin: 32px 16px; }
+
+.Toast--warning .Toast-icon { color: #fff; background-color: #ef4e00; /* #f9c513; original yellow */ }
+
+.Toast--imporant .Toast-icon { color: #24292e; background-color: #f9c513; }
+
+.Toast--tip .Toast-icon { color: #24292e; background-color: #00ac00; }
+
+.Toast-icon { color: #fff; background-color: #0366d6; }
 
 /*# sourceMappingURL=style.css.map */
