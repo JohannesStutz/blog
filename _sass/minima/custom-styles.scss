@@ -20,7 +20,6 @@ body {
 
 /*  */
 article, .home {
-	background: #fdfdfd;
 	/* White background and shadow for articles and home page
 	border: 1px solid #e8e8e8;
 	border-radius: 4px;
@@ -120,4 +119,29 @@ h3, h4 { margin-top: 2.5rem !important; }
 
 .site-footer a {
     color: #828282;
+}
+
+/* Define boxes */
+.Toast {
+	margin: 32px 16px;
+}
+
+.Toast--warning .Toast-icon {
+	color: #fff;
+	background-color: #ef4e00; /* #f9c513; original yellow */
+}
+
+.Toast--imporant .Toast-icon {
+	color: #24292e;
+	background-color: #f9c513;
+}
+
+.Toast--tip .Toast-icon {
+	color: #24292e;
+	background-color: #00ac00;
+}
+
+.Toast-icon {
+	color: #fff;
+	background-color: #0366d6;
 }
