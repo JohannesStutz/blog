@@ -88,10 +88,6 @@ pre, code {
 }
 
 /* Tweaks to font size etc.*/
-.home {
-	font-size: 18px;
-}
-
 li .post-meta {
 	font-size: 15px;
 }
@@ -101,8 +97,9 @@ h2 { margin-top: 3rem !important; }
 h3, h4 { margin-top: 2.5rem !important; }
 
 /* Reduce font size in normal text a bit */
-.post-content p, .post-content li {
-	font-size: 18px;
+.home, .post-content p, .post-content li, #notebook-container {
+	font-size: 17px;
+	color: #515151;
 }
 
 /* Change footer to play nicely with skyline */
@@ -124,6 +121,10 @@ h3, h4 { margin-top: 2.5rem !important; }
 /* Define boxes */
 .Toast {
 	margin: 32px 16px !important;
+}
+
+.Toast-content {
+	font-size: 85%;
 }
 
 .Toast--warning .Toast-icon {
