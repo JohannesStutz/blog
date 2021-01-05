@@ -513,8 +513,6 @@ table td { background-color: #fdfdfd; }
 pre, code { border: 0px; }
 
 /* Tweaks to font size etc.*/
-.home { font-size: 18px; }
-
 li .post-meta { font-size: 15px; }
 
 h2 { margin-top: 3rem !important; }
@@ -522,7 +520,7 @@ h2 { margin-top: 3rem !important; }
 h3, h4 { margin-top: 2.5rem !important; }
 
 /* Reduce font size in normal text a bit */
-.post-content p, .post-content li { font-size: 18px; }
+.home, .post-content p, .post-content li, #notebook-container { font-size: 17px; color: #515151; }
 
 /* Change footer to play nicely with skyline */
 .site-footer { background: #000; border-top: 0; padding: 45px 0; }
@@ -533,6 +531,8 @@ h3, h4 { margin-top: 2.5rem !important; }
 
 /* Define boxes */
 .Toast { margin: 32px 16px !important; }
+
+.Toast-content { font-size: 85%; }
 
 .Toast--warning .Toast-icon { color: #fff !important; background-color: #e54000 !important; /* #f9c513; original yellow */ }
 
