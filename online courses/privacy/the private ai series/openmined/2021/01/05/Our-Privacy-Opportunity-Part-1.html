@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Our Privacy Opportunity, Part 1 | Deep Learning Berlin</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Our Privacy Opportunity, Part 1" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My summary of Lesson 1 &amp; 2 of the first course in The Private AI Series by OpenMined" />
+<meta property="og:description" content="My summary of Lesson 1 &amp; 2 of the first course in The Private AI Series by OpenMined" />
+<link rel="canonical" href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/05/Our-Privacy-Opportunity-Part-1.html" />
+<meta property="og:url" content="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/05/Our-Privacy-Opportunity-Part-1.html" />
+<meta property="og:site_name" content="Deep Learning Berlin" />
+<meta property="og:image" content="https://deeplearning.berlin/images/articles/2021-01-05-openmined-pt1/title.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-05T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/05/Our-Privacy-Opportunity-Part-1.html","@type":"BlogPosting","headline":"Our Privacy Opportunity, Part 1","dateModified":"2021-01-05T00:00:00-06:00","datePublished":"2021-01-05T00:00:00-06:00","image":"https://deeplearning.berlin/images/articles/2021-01-05-openmined-pt1/title.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/05/Our-Privacy-Opportunity-Part-1.html"},"description":"My summary of Lesson 1 &amp; 2 of the first course in The Private AI Series by OpenMined","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://deeplearning.berlin/feed.xml" title="Deep Learning Berlin" /><!--<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">-->
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+<link rel="manifest" href="/images/icons/site.webmanifest">
+<link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg" color="#5bbad5"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/"><img src="/images/icons/bear-yellow-transp-bg.png"/>Deep Learning Berlin</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About Me</a><a class="page-link" href="/search/">Search</a><a class="page-link" href="/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Our Privacy Opportunity, Part 1</h1><p class="page-description">My summary of Lesson 1 & 2 of the first course in The Private AI Series by OpenMined</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-01-05T00:00:00-06:00" itemprop="datePublished">
+        Jan 5, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      18 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/categories/#online courses">online courses</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#privacy">privacy</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#the private ai series">the private ai series</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#openmined">openmined</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#I-started-taking-The-Private-AI-Series-by-OpenMined">I started taking The Private AI Series by OpenMined </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-1:-Society-Runs-on-Information-Flows">Concept 1: Society Runs on Information Flows </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-2:-Information-Flow">Concept 2: Information Flow </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-3:-The-Privacy-Dilemma">Concept 3: The Privacy Dilemma </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-4:-Data-is-Fire-🔥">Concept 4: Data is Fire 🔥 </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Privacy-dilemmas">Privacy dilemmas </a></li>
+<li class="toc-entry toc-h3"><a href="#Everything-can-be-private-data">Everything can be private data </a></li>
+<li class="toc-entry toc-h3"><a href="#Targeting">Targeting </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Concept-5:-The-Transparency-Dilemma">Concept 5: The Transparency Dilemma </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-6:-The-Privacy-Transparency-Pareto-Frontier">Concept 6: The Privacy-Transparency Pareto Frontier </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-7:-Research-is-Constrained-by-Information-Flows">Concept 7: Research is Constrained by Information Flows </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-8:-Healthy-Market-Competition-for-Information-Services">Concept 8: Healthy Market Competition for Information Services </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-9:-Data,-Energy,-and-the-Environment">Concept 9: Data, Energy, and the Environment </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-10:-Feedback-Mechanisms-&-Information-Flows">Concept 10: Feedback Mechanisms &amp; Information Flows </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-11:-Democracy-&-Public-Health-Conversation">Concept 11: Democracy &amp; Public Health Conversation </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-12:-New-Market-Incentives">Concept 12: New Market Incentives </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-13:-Safe-Data-Networks-for-Business,-Governance-and-R&D">Concept 13: Safe Data Networks for Business, Governance and R&amp;D </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-14:-Conflict,-Political-Science-&-Information-Flows">Concept 14: Conflict, Political Science &amp; Information Flows </a></li>
+<li class="toc-entry toc-h2"><a href="#Concept-15:-Disinformation-&-Information-Flows">Concept 15: Disinformation &amp; Information Flows </a></li>
+<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-01-05-Our-Privacy-Opportunity-Part-1.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="I-started-taking-The-Private-AI-Series-by-OpenMined">
+<a class="anchor" href="#I-started-taking-The-Private-AI-Series-by-OpenMined" aria-hidden="true"><span class="octicon octicon-link"></span></a>I started taking The Private AI Series by OpenMined<a class="anchor-link" href="#I-started-taking-The-Private-AI-Series-by-OpenMined"> </a>
+</h2>
+<p>The series contains four courses, all are free. Only the first one is online at the time of writing (05. Jan 2021).</p>
+<ol>
+<li>Our Privacy Opportunity</li>
+<li>Foundations of Private Computation</li>
+<li>Federated Learning Across Enterprises</li>
+<li>Federated Learning on Mobile</li>
+</ol>
+<p>The first course is non-technical and contains about 8 hours of video, taught by <a href="https://twitter.com/emmabluemke">Emma Bluemke</a> and <a href="https://twitter.com/iamtrask">Andrew Trask</a>. Additionally, they interview many experts. The course aims to provide a high-level overview of privacy, what it means, where it currently fails, and how possible solutions look. One key point is that there are new privacy-enhancing technologies on the rise that will change the way how humans collaborate. This brings with it many career and business opportunities.</p>
+<p>If you’re interested, sign up at <a href="https://courses.openmined.org/">courses.openmined.org</a>. I will take at least the first, non-technical course and will decide later whether I dive deeper with the technical courses.</p>
+<p>Lesson 1 is introductory. This is my summary of Lesson 2 of <em>Our Privacy Opportunity</em>, I wrote it for my forgetful self, but maybe it will be helpful for others - so here it is.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-1:-Society-Runs-on-Information-Flows">
+<a class="anchor" href="#Concept-1:-Society-Runs-on-Information-Flows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 1: Society Runs on Information Flows<a class="anchor-link" href="#Concept-1:-Society-Runs-on-Information-Flows"> </a>
+</h2>
+<p>This course is about privacy-transparency trade-offs and how they affect a huge number of problems. This lesson walks through some of the most important challenges to society and identifies how the privacy-transparency tradeoff underpins them. Improving information flows, by solving this tradeoff, can help us in many areas like disinformation, scientific innovation, and even democracy itself.
+</p>
+<div class="Toast Toast--important">
+   <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
+   <span class="Toast-content">Information flows are everywhere!</span>
+</div>
+We share our medical information with our doctor, we share our location with an app to get directions, we share our heart rates and sleeping patterns in hopes of improving our well-being. Every day, we share personal information to exchange goods, receive services, and in general, to collaborate. Sharing information is a part of almost every aspect of our life. You have to fully grasp this statement to understand how these flows are going to change in the future.
+<p>Information flows have two fundamental failure modes, where they fail to accomplish their purpose regarding privacy and transparency. These will be covered through case studies.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-2:-Information-Flow">
+<a class="anchor" href="#Concept-2:-Information-Flow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 2: Information Flow<a class="anchor-link" href="#Concept-2:-Information-Flow"> </a>
+</h2>
+<p>What is an information flow? Let's take the simple example of email. A sender, a message, a receiver. Hit send and that's an information flow. But it's much more nuanced than just the three attributes sender, message, receiver:</p>
+<ul>
+<li>Should other people than the receiver be allowed to read it?</li>
+<li>Would I be comfortable with the receiver forwarding my email, is this the intended information flow?</li>
+<li>What about the mail provider, they could probably read it, but I believe they just choose not to.</li>
+<li>Do I want the mail provider to read my mail only for a specific purpose, like for spam detection, but not for targeted advertising?</li>
+<li>Am I sending my exact identity with the email? Anonymously? Or a mix: as a member of group?</li>
+<li>Identity of the recipient: do I know exactly who they are? When I'm sending the mail to a specific group like a doctor's office, who reads it? </li>
+<li>But also: can the receiver have confidence in sender identity, whaf if my account was hacked?</li>
+</ul>
+<p>Sending an email is probably one of the most straight-forward information flows and still there are many questions. These questions and more exist around every information flow.</p>
+<p>New communication channels emerged. Snapchat deletes the messages once they've been read and prohibits forwarding or screenshotting. WhatsApp or Signal use end-to-end encryption for messages so it's impossible for anyone other than the intended recipient to read them.</p>
+<p>Users switch to these services because of seemingly tiny changes to the guarantees around information flow.
+This is the beginning of a revolution!
+</p>
+<div class="Toast Toast--important">
+   <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
+   <span class="Toast-content">Every part of the human experience is soaked in information flows. Since the beginning of human collaboration.</span>
+</div>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content">A more formal definition: An information flow is a flow of bits from a sender to a receiver. The sender and receiver could either be an exact individual, a member of a group, or an anonymous individual. The identity of the sender, the receiver, and the content of the message itself can be probabilistic!</span>
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-3:-The-Privacy-Dilemma">
+<a class="anchor" href="#Concept-3:-The-Privacy-Dilemma" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 3: The Privacy Dilemma<a class="anchor-link" href="#Concept-3:-The-Privacy-Dilemma"> </a>
+</h2>
+<p>My location is public information for everybody standing on the same street. So why do I feel uncomfortable with my location being tracked? Or Google Street View: why are people having trouble with Google taking photos of them in their front yard, when anybody could come by and see them exactly there? Because public information can become <em>so much more public</em> that it starts to bother us.</p>
+<p>Privacy is not about secrecy. People feel that their privacy is violated if information flows in a way they didn't expect and didn't like. It's all about appropriateness. Privacy is about flow, not the information itself.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><strong>Conceptual Integrity:</strong> sharing the same information might be private in one context, but not in another context. It’s about achieving appropriate information flow.</span>
+</div>
+Example: Facial recognition software. My face is public information as soon as I leave the house. So why is facial recognition bad? Not only because it could be misused (mass surveillance), but because I don't consent to the information flow.
+<p>Two main differences between facial recognition as ID and normal ID:</p>
+<ol>
+<li>I can't change my face. If it gets in the wrong hands, you can't just get a new password or credit card.</li>
+<li>It's identification without my consent. The information flow is not triggered by me, but by whatever system is watching me.</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-4:-Data-is-Fire-🔥">
+<a class="anchor" href="#Concept-4:-Data-is-Fire-%F0%9F%94%A5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 4: Data is Fire 🔥<a class="anchor-link" href="#Concept-4:-Data-is-Fire-%F0%9F%94%A5"> </a>
+</h2>
+<p>There is the notion that "data is the new oil". A better analogy is "data is like fire".</p>
+<ul>
+<li>It can be duplicated</li>
+<li>It can help us prosper and solve problems</li>
+<li>It can cause irreparable damage if misused</li>
+</ul>
+<p>And this dual-use for good or harm is true for all kinds of data, not just data that is clearly sensitive like medical data.</p>
+<h3 id="Privacy-dilemmas">
+<a class="anchor" href="#Privacy-dilemmas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Privacy dilemmas<a class="anchor-link" href="#Privacy-dilemmas"> </a>
+</h3>
+<p></p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content">A privacy dilemma is a trade-off whether to reveal information, where revealing that information causes some social good (like medical research) but could also lead to harm (like the misuse of medical data).</span>
+</div>
+Privacy dilemmas have various costs. The most obvious is the possible privacy violation. But there are other, societal costs: a failure to accomplish important outcomes of information flow (scientific progress, meaningful relationships, accountability)
+<div class="Toast Toast--tip">
+   <span class="Toast-icon"><svg class="octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg></span>
+   <span class="Toast-content">Privacy dilemmas are untapped market opportunities!</span>
+</div>
+<h3 id="Everything-can-be-private-data">
+<a class="anchor" href="#Everything-can-be-private-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Everything can be private data<a class="anchor-link" href="#Everything-can-be-private-data"> </a>
+</h3>
+<p>Your grocery shopping list is boring, right? Not always. You might not care now whether somebody knows you're buying bread. But when you suddenly stop buying bread (and rice and other carbs) it might be an indication of the diagnosis of diabetes. Suddenly it's very private information that you might not want to share.
+</p>
+<div class="Toast Toast--warning">
+   <span class="Toast-icon"><svg class="octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>
+   <span class="Toast-content">Anonymization doesn’t work!</span>
+</div>
+Even when names are removed from data, other features can be used to identify you, thanks to the power of machine learning (i.e., 5 movies you watched last year and roughly when you watched them).
+<p>Anonymization works so badly, that systematically exploiting its weaknesses can be a core business model. Emma gives an example of a company that buys anonymized health data and distributes it to insurance companies. They can then for example raise insurance costs for high-risk communities like poor neighborhoods that are more likely to get sick. Harm is done without knowing any one individual!</p>
+<p>Another example: Strava released an anonymized heatmap that revealed home addresses of individuals (because they cycle from home to work) and the location of US military bases. So, privacy can be relevant not only on an individual level but on an organizational or even national security level.</p>
+<h3 id="Targeting">
+<a class="anchor" href="#Targeting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Targeting<a class="anchor-link" href="#Targeting"> </a>
+</h3>
+<p>Acting on information. Advertisement, targeted disinformation, shaming, fraud, physical harm. Pinpointing someone's identity might not even be necessary. As long as someone is able to reach you (via your browser, your church, your neighborhood, ...), your name is absolutely not necessary to do harm.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-5:-The-Transparency-Dilemma">
+<a class="anchor" href="#Concept-5:-The-Transparency-Dilemma" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 5: The Transparency Dilemma<a class="anchor-link" href="#Concept-5:-The-Transparency-Dilemma"> </a>
+</h2>
+<blockquote>
+<p>Info:A transparency dilemma is when someone is forced to make a decision without having access to the information they need to make it.
+Sometimes the information flows don't exist at all (trusting a stranger to fix your tire), sometimes they are not verified (online reviews).</p>
+</blockquote>
+<p>The solution to privacy is not to stop all information flow, lock all data. This would prevent good use of data (think medical care, climate research) and also make it easier to have undesirable outcomes (money laundering, lack of accountability). Maximizing privacy could lead to a lack of transparency!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-6:-The-Privacy-Transparency-Pareto-Frontier">
+<a class="anchor" href="#Concept-6:-The-Privacy-Transparency-Pareto-Frontier" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 6: The Privacy-Transparency Pareto Frontier<a class="anchor-link" href="#Concept-6:-The-Privacy-Transparency-Pareto-Frontier"> </a>
+</h2>
+<p><figure>
+  
+    <img class="docimage" src="/images/copied_from_nb/../images/articles/2021-01-05-openmined-pt1/privacy-transparency.png" alt="" style="max-width: 400px">
+    
+    
+</figure>
+</p>
+<p>We used to have a classic trade-off between privacy and transparency. If you made all data private, you would have solved the privacy dilemma, but there would not be any transparency. If you made everything public, there would be no transparency dilemma, but no privacy left. With new technologies, you can actually move the pareto trade-off and have more of both, simultaneously!</p>
+<p><figure>
+  
+    <img class="docimage" src="/images/copied_from_nb/../images/articles/2021-01-05-openmined-pt1/privacy-transparency-up.png" alt="" style="max-width: 400px">
+    
+    
+</figure>
+</p>
+<p>This will have downstream effects on every industry handling valuable, sensitive, or private data.</p>
+<p>Governments don't have to choose between preserving the privacy of their citizens or protect national security, now they can do both. Researchers don't have to decide whether or not to share their data, now they can have the benefits from both. Corporations previously had to choose between the privacy of their users and the accuracy of their products and services, now they can have the benefits of both.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-7:-Research-is-Constrained-by-Information-Flows">
+<a class="anchor" href="#Concept-7:-Research-is-Constrained-by-Information-Flows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 7: Research is Constrained by Information Flows<a class="anchor-link" href="#Concept-7:-Research-is-Constrained-by-Information-Flows"> </a>
+</h2>
+<p>Research would profit if data could be more easily shared. More data would be available, it would be available faster, and experiments could be replicated easily.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-8:-Healthy-Market-Competition-for-Information-Services">
+<a class="anchor" href="#Concept-8:-Healthy-Market-Competition-for-Information-Services" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 8: Healthy Market Competition for Information Services<a class="anchor-link" href="#Concept-8:-Healthy-Market-Competition-for-Information-Services"> </a>
+</h2>
+<p>Most services that handle your data are, per default, services that lock you in. Because of privacy concerns, they are inherently anti-competitive. And more intense privacy restrictions actually make it harder for other new companies to compete (because you can't move your data to another provider).</p>
+<p>GDPR in the EU: a groundbreaking piece of legislation that is being copied around the world.</p>
+<p>People now have rights over their data. For example:</p>
+<ul>
+<li>Right to be forgotten</li>
+<li>Right to see which data a company has of them</li>
+</ul>
+<p>Interoperability: You should be able to move to a different company and take your data with you. Endless business opportunities.
+</p>
+<div class="Toast Toast--important">
+   <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
+   <span class="Toast-content">Privacy is not only about preventing information from being shared. Sometimes satisfying privacy is about forcing companies to share or delete your data in a specific way or at a specific time.</span>
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-9:-Data,-Energy,-and-the-Environment">
+<a class="anchor" href="#Concept-9:-Data,-Energy,-and-the-Environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 9: Data, Energy, and the Environment<a class="anchor-link" href="#Concept-9:-Data,-Energy,-and-the-Environment"> </a>
+</h2>
+<p>Example: Smart meters can be highly valuable for the switch to renewable energy. But they can also be extremely privacy invasive, because you can build rich patterns on how your daily habits are, when you are or are not at home etc.</p>
+<p>In Taiwan, there was a movement to provide air quality measurements through "Air Boxes" throughout the country. The government didn't invest heavily in this technology, but private citizens did. And they were able to coordinate with millions of people to get this system working!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-10:-Feedback-Mechanisms-&amp;-Information-Flows">
+<a class="anchor" href="#Concept-10:-Feedback-Mechanisms-&amp;-Information-Flows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 10: Feedback Mechanisms &amp; Information Flows<a class="anchor-link" href="#Concept-10:-Feedback-Mechanisms-&amp;-Information-Flows"> </a>
+</h2>
+<p>Feedback mechanisms today are often broken or non-existent. Examples:</p>
+<p>Consumer products: How do I know whether a product is any good? Amazon Reviews are easy to fake, and the real ones come from only the most polarized users</p>
+<p>Politics: A multiple choice question between a few candidate every 4 years is a <em>terrible</em> feedback system for reviewing the legislature of the past 4 years.</p>
+<p>Public safety: safety and security are not achieved by a lot of police, but by "eyes on the street", normal people watching out. It's at the same time <em>more effective</em> than a government-lead approach, and <em>less intrusive</em>! Some of the safest countries, like Taiwan, have among the lowest numbers of police per capita.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-11:-Democracy-&amp;-Public-Health-Conversation">
+<a class="anchor" href="#Concept-11:-Democracy-&amp;-Public-Health-Conversation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 11: Democracy &amp; Public Health Conversation<a class="anchor-link" href="#Concept-11:-Democracy-&amp;-Public-Health-Conversation"> </a>
+</h2>
+<p>Democracy is messy. Opinions are formed via social groups. In recent years, there was an uptick in polarization, one of the reasons probably being social media, where algorithms maximize engagement.</p>
+<p>A better way can be found in Taiwan, with the <em>Polis</em> system. A community-built, nation-wide application that supports conversation between millions of users in Taiwan. It's not optimized for <em>engagement</em>, but for <em>consensus</em>. People can enter their opinions in written form (tweet-like), and a combination of NLP and voting clusters these opinions. Turns out, opinions aren't actually individual. There are less opinions than there are people because opinions are formed socially. However, the social groups that form our opinions aren't fixed but constantly changing.</p>
+<p>So, some people emerge as being representative for specific opinions and become thought leaders for this particular matter. But now they must come up with a formulation that will get the most consent <em>across opinions</em>! [Not sure if I got this exactly right]</p>
+<p>Example: Uber wanted to come to Taiwan. Very polarized opinions. The solution was: Uber was permitted a temporary license in Taiwan. During this time, the public Taxi sector should adopt the efficient, algorithmic approaches from Uber while maintaining labor standards. If they would succeed, Uber would be banned. If they failed, Uber would be banned unless they met the labor standards of the public system. That put just enough pressure on both sides, and in the end, the public system did improve so much that Uber was excluded.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-12:-New-Market-Incentives">
+<a class="anchor" href="#Concept-12:-New-Market-Incentives" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 12: New Market Incentives<a class="anchor-link" href="#Concept-12:-New-Market-Incentives"> </a>
+</h2>
+<p>Many online (information-based) companies rely on attention (engagement) as their key metric. For some, this makes intuitive sense because their revenue is ad-driven. But even companies that run on a subscription model, like Netflix, do it. The Netflix CEO even said, they are competing with the time you spend sleeping. The question is: why?</p>
+<p>One answer is, it's a readily available metric that is fine-grained and allows for optimization. If Netflix just used the number of subscribers (and that's the value they actually try to increase), it would be too coarse. Only if a movie was that good or that bad that users actually subscribed/unsubscribed it would be measurable.</p>
+<p>Attention as a metric does work, and it is probably fine at a small scale. But at large scale and taken to the extremes it can cause harm, see the Netflix/sleep example.</p>
+<p>A better way: Netflix could try to optimize their experience to improve the users' sleep. But how would they measure it and train an algorithm on it? Fitbits track sleep but is it safe to share this data with Netflix?
+In general, these alternative metrics are called wellness metrics and can improve our lives.
+</p>
+<div class="Toast Toast--tip">
+   <span class="Toast-icon"><svg class="octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg></span>
+   <span class="Toast-content">Technology isn’t inherently addictive! Better products are possible.</span>
+</div>
+But we need to solve the privacy-transparency trade-off.
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-13:-Safe-Data-Networks-for-Business,-Governance-and-R&amp;D">
+<a class="anchor" href="#Concept-13:-Safe-Data-Networks-for-Business,-Governance-and-R&amp;D" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 13: Safe Data Networks for Business, Governance and R&amp;D<a class="anchor-link" href="#Concept-13:-Safe-Data-Networks-for-Business,-Governance-and-R&amp;D"> </a>
+</h2>
+<p>Free/easy (?) information flow across EU states was proposed. When a company wants to introduce a product in all member states of the EU, it needs data from all these states to customize its product. So, for example a company in France needs data from Germany.</p>
+<p>But, as shown in Concept 4, new mathematical tools allow reconstruction of personal details even from anonymized datasets. Therefore, we need to build trust to allow sharing of sensitive data.</p>
+<p>Today, there is the technology available that allows privacy-preserving data analysis. Imagine the data in question never actually moves. It would remain on a server in Germany, but the French company could still work with it!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-14:-Conflict,-Political-Science-&amp;-Information-Flows">
+<a class="anchor" href="#Concept-14:-Conflict,-Political-Science-&amp;-Information-Flows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 14: Conflict, Political Science &amp; Information Flows<a class="anchor-link" href="#Concept-14:-Conflict,-Political-Science-&amp;-Information-Flows"> </a>
+</h2>
+<p>One rational explanation of war: Mutual Optimism. It's extremely hard to predict the outcome of a battle, a war. Both sides come up with an estimate that says, "we're more likely than not to win". The sum of the estimates is greater than 1. And that's why nations go to war.</p>
+<p>A way to share private military information to determine the winner (in a digital war game) without actually giving the opponent this information could potentially avoid wars.</p>
+<p>This is true for other conflicts as well, legal disputes, commercial competition. If the winner could be determined ahead some conflicts wouldn't be fought.</p>
+<p>Moving the privacy-transparency trade-off is essential here as well.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concept-15:-Disinformation-&amp;-Information-Flows">
+<a class="anchor" href="#Concept-15:-Disinformation-&amp;-Information-Flows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concept 15: Disinformation &amp; Information Flows<a class="anchor-link" href="#Concept-15:-Disinformation-&amp;-Information-Flows"> </a>
+</h2>
+<p>The flow of news is one of the most important information flows in the world. How do you know that what you read in the news is actually true?</p>
+<p>Naturally, before the invention of the printing press, people had the power to talk to maybe 50 people at the same time. For a story to be shared outside your own social circle, you would have to convince other people to talk about it. Very comparable to the R number in infectious diseases. A baseless rumor might have a natural R value of 0.01 (1 in a 100 people would spread it). But today, where the average person has hundreds of contacts on social media, the R value is easily 10s or 100s of times bigger and fake news and rumors can spread.</p>
+<p>How to check if news is true?</p>
+<ul>
+<li>Just wait for humans to adjust to the internet? Bad idea, when we look at the printing press, it took hundreds of years and many conflicts until humans adjusted to it.</li>
+<li>Have social media platforms check every bit that is published? Not feasible for hundreds of millions of users.</li>
+<li>Have AI and machine learning check whether a piece of news is true? Probably a bad idea in the long run, because news is an information bottleneck. You receive a text message "I love you". Can you tell whether it's true just by looking at it? No! You have to have knowledge of the world. So, detecting fake news just by reading it is impossible (you could randomly generate a story that actually happened in the real world).</li>
+<li>Just get off social media? Maybe we're just not supposed be interconnected with that many people?</li>
+</ul>
+<p>The most interesting solution is currently being deployed in Taiwan:</p>
+<p>A platform (g0v, pronounced "gov zero") that people interact on, and trained volunteers comment on suspicious stories with other sources one might check. Because these comments come from people that you actually know or from your local community, not from a state's official or a platform, you already have a level of trust.</p>
+<p>Two groups of ideas that seem to work highly effective:</p>
+<ol>
+<li>It's not so much about detecting misinformation and taking it down. It's more about fostering a national community that helps each other filter between truths and lies. People are relying on existing interpersonal relationships, instead of having to trust the state or the platform.</li>
+<li>Taiwan is using technology and intentional narratives such as humor to foster trust between civil society and the state. Humor over rumor!
+<div class="Toast Toast--important">
+   <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
+   <span class="Toast-content">It’s incredibly important to consider how societies historically dealt with misinformation.</span>
+</div>
+It doesn't fix the problem to let the platforms take down false posts. People are curious and won't just accept this as "huh, this is false then".</li>
+</ol>
+<p>The beauty of Audrey Tang's work (g0v): constructing information flows that are healthy for society. Not thinking about the most efficient way to prevent a data flow. But to activate existing ways to prevent disinformation: get people to help their friends and use humor.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conclusion">
+<a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
+</h2>
+<p>The privacy-transparency trade-off or even privacy in general is in service of a higher aim: creating information flows within society that creates social good. This is the true aim.
+</p>
+<div class="Toast Toast--important">
+   <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
+   <span class="Toast-content">Privacy technology is not just about privacy!</span>
+</div>
+Don't sit and look for use cases that scream "privacy". This is totally defensive. Instead, ask the questions:
+How can society accomplish its goals with less risk, higher accuracy, faster, and with better aligned incentives than ever before, through better flows of information.
+<p>That is the promise of privacy-enhancing technology and has the potential to radically improve every aspect of how we share information.
+</p>
+<div class="Toast Toast--tip">
+   <span class="Toast-icon"><svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg></span>
+   <span class="Toast-content">Entrepreneurial opportunities, regulatory opportunities, investing opportunities:</span>
+</div>It's not about hiding data; it's about enabling specific information flows (and just these!) to maximize social good.
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><a class="u-url" href="/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/05/Our-Privacy-Opportunity-Part-1.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Join me in my self-taught journey into deep learning.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/johannesstutz" title="johannesstutz"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/daflowjoe" title="daflowjoe"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
