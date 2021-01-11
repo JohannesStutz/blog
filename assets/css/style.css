@@ -523,7 +523,7 @@ h3, h4 { margin-top: 2.5rem !important; }
 .home, .post-content p, .post-content li, #notebook-container { font-size: 17px; color: #515151; }
 
 /* Fix vertical margins of lists */
-ul, ol { margin-top: 1rem; }
+ul, ol { margin-top: 1rem !important; }
 
 /* Change footer to play nicely with skyline */
 .site-footer { background: #000; border-top: 0; padding: 45px 0; }
