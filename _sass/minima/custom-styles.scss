@@ -97,7 +97,7 @@ h2 { margin-top: 3rem !important; }
 h3, h4 { margin-top: 2.5rem !important; }
 
 /* Reduce font size in normal text a bit */
-.home, .post-content p, .post-content li, #notebook-container {
+.home, .post-content p, .post-content li, #notebook-container, p code, code {
 	font-size: 17px;
 	color: #515151;
 }
@@ -105,6 +105,10 @@ h3, h4 { margin-top: 2.5rem !important; }
 /* Fix vertical margins of lists */
 ul, ol {
 	margin-top: 1rem !important;
+}
+
+li ul, li ol {
+	margin-top: 0rem !important;
 }
 
 /* Change footer to play nicely with skyline */
