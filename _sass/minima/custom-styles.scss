@@ -98,7 +98,7 @@ h3, h4 { margin-top: 2.5rem !important; }
 
 /* Reduce font size in normal text a bit */
 .home, .post-content p, .post-content li, #notebook-container, p code, code {
-	font-size: 17px;
+	font-size: 17px !important;
 	color: #515151;
 }
 
@@ -132,7 +132,7 @@ li ul, li ol {
 	margin: 32px 16px !important;
 }
 
-.Toast-content {
+.Toast-content, .Toast-content code {
 	font-size: 85%;
 }
 
