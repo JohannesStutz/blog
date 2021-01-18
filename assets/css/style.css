@@ -520,7 +520,7 @@ h2 { margin-top: 3rem !important; }
 h3, h4 { margin-top: 2.5rem !important; }
 
 /* Reduce font size in normal text a bit */
-.home, .post-content p, .post-content li, #notebook-container, p code, code { font-size: 17px; color: #515151; }
+.home, .post-content p, .post-content li, #notebook-container, p code, code { font-size: 17px !important; color: #515151; }
 
 /* Fix vertical margins of lists */
 ul, ol { margin-top: 1rem !important; }
@@ -537,7 +537,7 @@ li ul, li ol { margin-top: 0rem !important; }
 /* Define boxes */
 .Toast { margin: 32px 16px !important; }
 
-.Toast-content { font-size: 85%; }
+.Toast-content, .Toast-content code { font-size: 85%; }
 
 .Toast--warning .Toast-icon { color: #fff !important; background-color: #e54000 !important; /* #f9c513; original yellow */ }
 
