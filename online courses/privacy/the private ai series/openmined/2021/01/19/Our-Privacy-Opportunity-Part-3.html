@@ -145,8 +145,8 @@ window.onload = wrap_img;
 <a class="anchor" href="#Introducing-Structured-Transparency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introducing Structured Transparency<a class="anchor-link" href="#Introducing-Structured-Transparency"> </a>
 </h2>
 <p><a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/08/Our-Privacy-Opportunity-Part-1.html">Part 1 of my summary</a> of the Private AI series was all about information flows and how they are fundamental to our society. We also learned about how information flows are often broken today because of the privacy-transparency trade-off.</p>
-<p>In <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/11/Our-Privacy-Opportunity-Part-2.html">part 2</a>, we discussed which technical problems exactly are underlying the privacy-transparency trade-off.</p>
-<p>In Part 3, covering the first half of lesson 4, we now learn about solutions.</p>
+<p>In <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/11/Our-Privacy-Opportunity-Part-2.html">Part 2</a>, we discussed which technical problems exactly are underlying the privacy-transparency trade-off.</p>
+<p>In Part 3, covering the first half of lesson 4, we now learn about <strong>solutions</strong>.</p>
 <p>The course introduces the concept of <strong>structured transparency</strong>. It aims to provide you with a structured approach to analyze privacy issues. Enable transparency without the risk of misuse.</p>
 <p><strong>Examples:</strong></p>
 <ul>
@@ -154,11 +154,10 @@ window.onload = wrap_img;
 <li>A sniffer dog. It detects whether a piece of luggage is safe, without revealing the private content.</li>
 <li>Another current example that uses technology to allow structured transparency is arms control. Controlling nuclear warheads is very challenging. How to prove the authenticity of a warhead without revealing details about its construction? There is an <a href="https://news.mit.edu/2018/nuclear-weapons-isotope-detection-method-0419">ingenious method</a> based on physics that allows just this.</li>
 </ul>
-<p>Many different fields, like political science or mathematics, work on structured transparency. But they often don't share a language. Two people might not even realize they are working on the same problem. Therefore, we should try to speak about transparency in general terms.</p>
 <p>Why is structured transparency important <strong>now</strong>?</p>
 <ol>
 <li>There has never been a more important time and need for structured transparency. Digital technology allows collecting and analzying sensitive data at an unprecedented scale. This introduces huge threats to privacy and social stability.</li>
-<li>There has never been a more promising time for structured transparency. Recent developments in privacy-enhancing technologies allow high levels of structured transparency that had been impossible earlier. These technologies improve rapidly and they are pushing the <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/08/Our-Privacy-Opportunity-Part-1.html#The-Privacy-Transparency-Pareto-Frontier">pareto frontier</a> of the privacy-transparency trade-off.</li>
+<li>There has never been a more promising time for structured transparency. Recent developments in privacy-enhancing technologies allow high levels of structured transparency that had been impossible earlier. These technologies are improving rapidly and they are pushing the <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/08/Our-Privacy-Opportunity-Part-1.html#The-Privacy-Transparency-Pareto-Frontier">pareto frontier</a> of the privacy-transparency trade-off.</li>
 </ol>
 
 </div>
@@ -170,9 +169,8 @@ window.onload = wrap_img;
 <h2 id="The-5-Components-of-Structured-Transparency">
 <a class="anchor" href="#The-5-Components-of-Structured-Transparency" aria-hidden="true"><span class="octicon octicon-link"></span></a>The 5 Components of Structured Transparency<a class="anchor-link" href="#The-5-Components-of-Structured-Transparency"> </a>
 </h2>
-<p>There is a large number of complex privacy technologies available. The structured transparency framework exists to help you break down an information flow into its individual challenges. Then we can figure out which technology is applicable.</p>
-<p>Structured transparency has the goal to make privacy-enhancing technologies <em>accessible</em>. It wants to build a bridge between technical and non-technical communities.</p>
-<p>You should focus on the goals of structured transparency instead of single tools or technologies. These are always changing and evolving. Remember: when you focus too much on using a hammer, everything looks like a nail 😊</p>
+<p>There is a large number of complex privacy technologies available. The structured transparency framework exists to help you break down an information flow into its individual challenges. Then we can figure out which technology is applicable. Structured transparency has the goal to make privacy-enhancing technologies <strong>accessible</strong>. It wants to build a bridge between technical and non-technical communities.</p>
+<p>You should focus on the goals of structured transparency instead of single tools or technologies, because these are always changing and evolving.</p>
 <p>The guarantees of structured transparency operate over a <em>flow of information</em>.</p>
 <p>The guarantees:</p>
 <ol>
@@ -198,14 +196,13 @@ window.onload = wrap_img;
 <h2 id="Input-Privacy">
 <a class="anchor" href="#Input-Privacy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Input Privacy<a class="anchor-link" href="#Input-Privacy"> </a>
 </h2>
-<p></p>
+<p><strong>Example:</strong> You write a letter to a friend, put it in an envelope, and give it to the postal service. The postal service then uses its knowledge and logistics to navigate the letter to the destination. All without reading your letter, thanks to the envelope. Input privacy in this case means the guarantee that the mailman won't be able to see your inputs (the contents of your letter) to your information flow.
+</p>
 <div class="Toast">
    <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
    <span class="Toast-content"><b>Note:</b> <strong>Input privacy</strong> is a guarantee that one or more people can participate in a computation, in such a way that neither party learns anything about the other party’s inputs to the computation.</span>
 </div>
-<strong>Example:</strong> You write a letter to a friend, put it in an envelope, and give it to the postal service. The postal service then uses its knowledge and logistics to navigate the letter to the destination. All without reading your letter, thanks to the envelope. Input privacy in this case means the guarantee that the mailman won't be able to see your inputs (the contents of your letter) to your information flow.
-<p>Let's consider a special case that is a bit surprising. What if you sent a letter to the mailman's mother, who reads it out loud to him? This would not violate input privacy, because the information flow had been completed at the moment he delivered the mail.
-</p>
+Let's consider a special case that is a bit surprising. What if you sent a letter to the mailman's mother, who reads it out loud to him? This would not violate input privacy, because the information flow had been completed at the moment he delivered the mail.
 <div class="Toast Toast--important">
    <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
    <span class="Toast-content"><b>Important:</b> Input privacy’s guarantee only protects the inputs <strong>to</strong> an information flow and the intermediate variables within an information flow, but not the outputs.</span>
@@ -225,9 +222,7 @@ Consider an information flow like a system of pipes, moving colored water from t
 </figure>
 
 </figure></p>
-<figcaption>A and B can't know which color the other person pours in.</figcaption><p>One exception: If <strong><span style="color: #4472C4">B</span></strong> was connected to the <em>output</em> of the information flow, then they could tell by the color of the output water that <em>someone</em> is feeding in red water. Reverse-engineering inputs from the outputs like this is not violating input privacy.</p>
-<p>In the graphic, the grey area marks the elements of the information flow that input privacy protects.</p>
-<p>What's exciting about input privacy is not the guarantee itself, but the new technologies behind it. Recently proposed techniques are providing input privacy in ways that were impossible only a few years ago. For example, it is possible to translate a confidential document without the translator being able to read the content!</p>
+<figcaption>A and B can't know which color the other person pours in.</figcaption><p>One exception: If <strong><span style="color: #4472C4">B</span></strong> was connected to the <em>output</em> of the information flow, then they could tell by the color of the output water that <em>someone</em> is feeding in red water. Reverse-engineering inputs from the outputs like this is not violating input privacy. In the graphic, the grey area marks the elements of the information flow that input privacy protects.</p>
 <p>There are non-technical solutions to input privacy. A common example is a <a href="https://en.wikipedia.org/wiki/Non-disclosure_agreement">non-disclosure agreement</a>.</p>
 <p>When you make sure that input privacy is satisfied, you can prevent the <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/11/Our-Privacy-Opportunity-Part-2.html#The-Copy-Problem">copy problem</a>. Because it's impossible to copy input information you never see!</p>
 
@@ -240,6 +235,7 @@ Consider an information flow like a system of pipes, moving colored water from t
 <h2 id="Technical-Tools-for-Input-Privacy">
 <a class="anchor" href="#Technical-Tools-for-Input-Privacy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technical Tools for Input Privacy<a class="anchor-link" href="#Technical-Tools-for-Input-Privacy"> </a>
 </h2>
+<p>What's exciting about input privacy is not the guarantee itself, but the new technologies behind it. Recently proposed techniques are providing input privacy in ways that were impossible only a few years ago.</p>
 <h3 id="Tool-1:-Public-key-Cryptography">
 <a class="anchor" href="#Tool-1:-Public-key-Cryptography" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tool 1: Public-key Cryptography<a class="anchor-link" href="#Tool-1:-Public-key-Cryptography"> </a>
 </h3>
@@ -286,12 +282,7 @@ The big generic use case: you can use cloud machines without trusting cloud prov
    <span class="Toast-content"><b>Tip:</b> As a business providing cloud services: with homomorphic encryption, you can <strong>guarantee</strong> to your customers that you cannot see their data.</span>
 </div>
 This is also useful for <strong>storing information</strong>. Take your bank as an <strong>example:</strong> if they stored your information with homomorphic encryption, they would not know how much money you had. But you could still deposit and withdraw as usual.
-<p>HE is very <strong>general-purpose</strong>. Multiple people can take some information, encrypt it with a public key, and then run arbitrary programs on it. The outputs can only be decrypted by whoever has the corresponding private key.
-</p>
-<div class="Toast Toast--tip">
-   <span class="Toast-icon"><svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg></span>
-   <span class="Toast-content"><b>Tip:</b> The biggest changes will not come from just encrypting existing systems. They will come from new opportunities. Ask yourself: What could I never do until now, because sharing my data would be too risky?</span>
-</div>
+<p>HE is very <strong>general-purpose</strong>. Multiple people can take some information, encrypt it with a public key, and then run arbitrary programs on it. The outputs can only be decrypted by whoever has the corresponding private key.</p>
 
 </div>
 </div>
@@ -314,7 +305,7 @@ We take a closer look at an interesting one of those algorithms: <strong>Additiv
 <p>What is even more amazing: while this number is encrypted between Alex and Bob, they can <strong>perform calculations</strong> on it. Let's double our number. The shares <code>-1</code> and <code>6</code> would be transformed into <code>-2</code> and <code>12</code>. The sum of them would be <code>10</code>, so <code>5*2</code>✅</p>
 <p>The kicker: all programs are numerical operations. At the lowest level every text document, image file or video is just a large number. We could take each individual number and encrypt it across multiple people like Alex and Bob. A file, a program, or an entire operating system could be encrypted this way.</p>
 <p>For another example, take a look at <a href="https://www.inpher.io/technology/what-is-secure-multiparty-computation">this video</a>. There, SMPC is used to calculate the average salary of three employees, and they don't have to reveal their individual salaries.</p>
-<p><a href="#Homomorphic-Encryption-(HE">HE</a>) and SMPC are only two of many algorithms available for input privacy. Why do we need so many versions? The reason is: different algorithms run faster in different environments. SMPC requires high bandwidth to send the encrypted numbers between devices. But it needs only little computing power. HE on the other hand does not need high bandwidth, but it has to perform a lot of additional steps to perform calculations on encrypted data. So the optimal algorithm depends on your use case.</p>
+<p>HE and SMPC are only two of many algorithms available for input privacy. Why do we need so many versions? The reason is: different algorithms run faster in different environments. SMPC requires high bandwidth to send the encrypted numbers between devices. But it needs only little computing power. HE on the other hand does not need high bandwidth, but it has to perform a lot of additional steps to perform calculations on encrypted data. So the optimal algorithm depends on your use case.</p>
 <figure class="image">
 <figure>
   
@@ -345,14 +336,14 @@ If I have an information flow with inputs and outputs, how much can I <strong>re
 <li>If I have the results of the US census, how much could I infer about any particular US citizen by analyzing the census?</li>
 <li>When I look at a drug survey, can I infer that an individual participant has a certain disease?</li>
 </ul>
-<p>Which parts of the content do we care about? It depends. The guarantee of output privacy can refer to any fact that can be conveyed in an information flow.</p>
+<p>Contents matter! Output privacy is about giving you <strong>control over the contents</strong> you're sending to people. Unbundle what you want to share from what you don't want to share. The guarantee of output privacy can refer to any fact that can be conveyed in an information flow.</p>
 <p><strong>Examples:</strong></p>
 <ul>
 <li>While you are on the telephone with your boss, you might want to hide the fact that you are on a beach.</li>
 <li>When you participate in a medical study, you might want to stay anonymous, so that your insurance company cannot learn any risk factors of you.</li>
 <li>While on a video chat with friends, you might want to blur your background to hide the mess you're in.</li>
 </ul>
-<p>Contents matter! Output privacy is about giving you <strong>control over the contents</strong> you're sending to people. Unbundle what you want to share from what you don't want to share. And it's not only about the information you are sharing exactly. It's also about information people might use to infer other things about you.</p>
+<p>And it's not only about the information you are sharing exactly. It's also about information people might use to infer other things about you.</p>
 <p><strong>Example:</strong> Did you know that analytics companies scrape and parse social media, <a href="https://www.brandwatch.com/image-insights/">looking for products and brands in your pictures</a>? You should be able to share what you want to say ("I'm enjoying life on the beach"), without revealing other details. For example, the bottle of medication on the table behind you. Photo post-processing that removes or blurs sensitive items is a great example of output privacy.</p>
 
 </div>
@@ -425,8 +416,13 @@ So if Andrew averages over enough people in the course, the noise of the random 
 <h2 id="To-be-continued">
 <a class="anchor" href="#To-be-continued" aria-hidden="true"><span class="octicon octicon-link"></span></a>To be continued<a class="anchor-link" href="#To-be-continued"> </a>
 </h2>
-<p>This lesson explored the concept of structured transparency. We took a closer look on the first two guarantees of structured transparency: Input privacy and output privacy.</p>
-<p>In the next summary, I'll cover the remaining guarantees: Input and output verification as well as flow governance. It will be online later this week.</p>
+<p>This lesson explored the concept of structured transparency. We took a closer look on the first two guarantees of structured transparency: Input privacy and output privacy.
+</p>
+<div class="Toast Toast--tip">
+   <span class="Toast-icon"><svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg></span>
+   <span class="Toast-content"><b>Tip:</b> The biggest changes will not come from just encrypting existing systems. They will come from new opportunities. Ask yourself: What could I never do until now, because sharing my data would be too risky?</span>
+</div>
+In the next summary, I'll cover the remaining guarantees: Input and output verification as well as flow governance. It will be online later this week.
 <p>If you found a paragraph that needs improvement, please <a href="https://twitter.com/daflowjoe">let me know</a>! I'm also happy to hear from you if you found this summary helpful! 😊</p>
 
 </div>
