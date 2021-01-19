@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>The Private AI Series, Course 1, Part 3 | Deep Learning Berlin</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="The Private AI Series, Course 1, Part 3" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introducing structured transparency. Input and output privacy. Course notes on lesson 4." />
+<meta property="og:description" content="Introducing structured transparency. Input and output privacy. Course notes on lesson 4." />
+<link rel="canonical" href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/19/Our-Privacy-Opportunity-Part-3.html" />
+<meta property="og:url" content="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/19/Our-Privacy-Opportunity-Part-3.html" />
+<meta property="og:site_name" content="Deep Learning Berlin" />
+<meta property="og:image" content="https://deeplearning.berlin/images/articles/2021-openmined-pt3/input-privacy-v2.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-19T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/19/Our-Privacy-Opportunity-Part-3.html","@type":"BlogPosting","headline":"The Private AI Series, Course 1, Part 3","dateModified":"2021-01-19T00:00:00-06:00","datePublished":"2021-01-19T00:00:00-06:00","image":"https://deeplearning.berlin/images/articles/2021-openmined-pt3/input-privacy-v2.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/19/Our-Privacy-Opportunity-Part-3.html"},"description":"Introducing structured transparency. Input and output privacy. Course notes on lesson 4.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://deeplearning.berlin/feed.xml" title="Deep Learning Berlin" />
+
+<script async defer data-domain="deeplearning.berlin" src="https://plausible.io/js/plausible.js"></script><!--<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">-->
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+<link rel="manifest" href="/images/icons/site.webmanifest">
+<link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg" color="#5bbad5"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/"><img src="/images/icons/bear-yellow-transp-bg.png"/>Deep Learning Berlin</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About Me</a><a class="page-link" href="/search/">Search</a><a class="page-link" href="/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">The Private AI Series, Course 1, Part 3</h1><p class="page-description">Introducing structured transparency. Input and output privacy. Course notes on lesson 4.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-01-19T00:00:00-06:00" itemprop="datePublished">
+        Jan 19, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      21 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/categories/#online courses">online courses</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#privacy">privacy</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#the private ai series">the private ai series</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#openmined">openmined</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Introducing-Structured-Transparency">Introducing Structured Transparency </a></li>
+<li class="toc-entry toc-h2"><a href="#The-5-Components-of-Structured-Transparency">The 5 Components of Structured Transparency </a></li>
+<li class="toc-entry toc-h2"><a href="#Input-Privacy">Input Privacy </a></li>
+<li class="toc-entry toc-h2"><a href="#Technical-Tools-for-Input-Privacy">Technical Tools for Input Privacy </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Tool-1:-Public-key-Cryptography">Tool 1: Public-key Cryptography </a></li>
+<li class="toc-entry toc-h3"><a href="#Tool-2:-Homomorphic-Encryption-(HE)">Tool 2: Homomorphic Encryption (HE) </a></li>
+<li class="toc-entry toc-h3"><a href="#Tool-3:-Secure-Multi-Party-Computation-(SMPC)">Tool 3: Secure Multi-Party Computation (SMPC) </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Output-Privacy">Output Privacy </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Differential-Privacy-(DP)">Differential Privacy (DP) </a></li>
+<li class="toc-entry toc-h3"><a href="#Robust-Output-Privacy-Infrastructure">Robust Output Privacy Infrastructure </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#To-be-continued">To be continued </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-01-19-Our-Privacy-Opportunity-Part-3.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Introducing-Structured-Transparency">
+<a class="anchor" href="#Introducing-Structured-Transparency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introducing Structured Transparency<a class="anchor-link" href="#Introducing-Structured-Transparency"> </a>
+</h2>
+<p><a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/08/Our-Privacy-Opportunity-Part-1.html">Part 1 of my summary</a> of the Private AI series was all about information flows and how they are fundamental to our society. We also learned about how information flows are often broken today because of the privacy-transparency trade-off.</p>
+<p>In <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/11/Our-Privacy-Opportunity-Part-2.html">part 2</a>, we discussed which technical problems exactly are underlying the privacy-transparency trade-off.</p>
+<p>In Part 3, covering the first half of lesson 4, we now learn about solutions.</p>
+<p>The course introduces the concept of <strong>structured transparency</strong>. It aims to provide you with a structured approach to analyze privacy issues. Enable transparency without the risk of misuse.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Secret voting is a form of structured transparency. Citizens can express their preferences without having to fear repression.</li>
+<li>A sniffer dog. It detects whether a piece of luggage is safe, without revealing the private content.</li>
+<li>Another current example that uses technology to allow structured transparency is arms control. Controlling nuclear warheads is very challenging. How to prove the authenticity of a warhead without revealing details about its construction? There is an <a href="https://news.mit.edu/2018/nuclear-weapons-isotope-detection-method-0419">ingenious method</a> based on physics that allows just this.</li>
+</ul>
+<p>Many different fields, like political science or mathematics, work on structured transparency. But they often don't share a language. Two people might not even realize they are working on the same problem. Therefore, we should try to speak about transparency in general terms.</p>
+<p>Why is structured transparency important <strong>now</strong>?</p>
+<ol>
+<li>There has never been a more important time and need for structured transparency. Digital technology allows collecting and analzying sensitive data at an unprecedented scale. This introduces huge threats to privacy and social stability.</li>
+<li>There has never been a more promising time for structured transparency. Recent developments in privacy-enhancing technologies allow high levels of structured transparency that had been impossible earlier. These technologies improve rapidly and they are pushing the <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/08/Our-Privacy-Opportunity-Part-1.html#The-Privacy-Transparency-Pareto-Frontier">pareto frontier</a> of the privacy-transparency trade-off.</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-5-Components-of-Structured-Transparency">
+<a class="anchor" href="#The-5-Components-of-Structured-Transparency" aria-hidden="true"><span class="octicon octicon-link"></span></a>The 5 Components of Structured Transparency<a class="anchor-link" href="#The-5-Components-of-Structured-Transparency"> </a>
+</h2>
+<p>There is a large number of complex privacy technologies available. The structured transparency framework exists to help you break down an information flow into its individual challenges. Then we can figure out which technology is applicable.</p>
+<p>Structured transparency has the goal to make privacy-enhancing technologies <em>accessible</em>. It wants to build a bridge between technical and non-technical communities.</p>
+<p>You should focus on the goals of structured transparency instead of single tools or technologies. These are always changing and evolving. Remember: when you focus too much on using a hammer, everything looks like a nail 😊</p>
+<p>The guarantees of structured transparency operate over a <em>flow of information</em>.</p>
+<p>The guarantees:</p>
+<ol>
+<li>Input privacy</li>
+<li>Output privacy</li>
+<li>Input verification</li>
+<li>Output verification</li>
+<li>Flow governance</li>
+</ol>
+<ul>
+<li>Input privacy and verification are guarantees about the <em>inputs</em> of an information flow.</li>
+<li>Output privacy and verification are guarantees about  the <em>outputs</em> of an information flow.</li>
+<li>Input and output <em>privacy</em> relate to information that needs to be <em>hidden</em>. Input and output <em>verification</em> refers to information that needs to be <em>revealed</em> in a verifiable way.</li>
+<li>Flow governance is concerned with who is allowed to <em>change</em> the flow. This includes who is able to change the input and output privacy and verification guarantees.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Input-Privacy">
+<a class="anchor" href="#Input-Privacy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Input Privacy<a class="anchor-link" href="#Input-Privacy"> </a>
+</h2>
+<p></p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> <strong>Input privacy</strong> is a guarantee that one or more people can participate in a computation, in such a way that neither party learns anything about the other party’s inputs to the computation.</span>
+</div>
+<strong>Example:</strong> You write a letter to a friend, put it in an envelope, and give it to the postal service. The postal service then uses its knowledge and logistics to navigate the letter to the destination. All without reading your letter, thanks to the envelope. Input privacy in this case means the guarantee that the mailman won't be able to see your inputs (the contents of your letter) to your information flow.
+<p>Let's consider a special case that is a bit surprising. What if you sent a letter to the mailman's mother, who reads it out loud to him? This would not violate input privacy, because the information flow had been completed at the moment he delivered the mail.
+</p>
+<div class="Toast Toast--important">
+   <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
+   <span class="Toast-content"><b>Important:</b> Input privacy’s guarantee only protects the inputs <strong>to</strong> an information flow and the intermediate variables within an information flow, but not the outputs.</span>
+</div>
+Consider an information flow like a system of pipes, moving colored water from two inputs into one output. Colored water represents private data. Input privacy guarantees that
+<ol>
+<li>the pipes don't leak</li>
+<li>information only flows one way.</li>
+</ol>
+<p>This means that no person can see which color the other person pours into their pipe.</p>
+<p><figure class="image">
+<figure>
+  
+    <img class="docimage" src="/images/copied_from_nb/../images/articles/2021-openmined-pt3/input-privacy-v2.png" alt="" style="max-width: 700px">
+    
+    
+</figure>
+
+</figure></p>
+<figcaption>A and B can't know which color the other person pours in.</figcaption><p>One exception: If <strong><span style="color: #4472C4">B</span></strong> was connected to the <em>output</em> of the information flow, then they could tell by the color of the output water that <em>someone</em> is feeding in red water. Reverse-engineering inputs from the outputs like this is not violating input privacy.</p>
+<p>In the graphic, the grey area marks the elements of the information flow that input privacy protects.</p>
+<p>What's exciting about input privacy is not the guarantee itself, but the new technologies behind it. Recently proposed techniques are providing input privacy in ways that were impossible only a few years ago. For example, it is possible to translate a confidential document without the translator being able to read the content!</p>
+<p>There are non-technical solutions to input privacy. A common example is a <a href="https://en.wikipedia.org/wiki/Non-disclosure_agreement">non-disclosure agreement</a>.</p>
+<p>When you make sure that input privacy is satisfied, you can prevent the <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/11/Our-Privacy-Opportunity-Part-2.html#The-Copy-Problem">copy problem</a>. Because it's impossible to copy input information you never see!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Technical-Tools-for-Input-Privacy">
+<a class="anchor" href="#Technical-Tools-for-Input-Privacy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technical Tools for Input Privacy<a class="anchor-link" href="#Technical-Tools-for-Input-Privacy"> </a>
+</h2>
+<h3 id="Tool-1:-Public-key-Cryptography">
+<a class="anchor" href="#Tool-1:-Public-key-Cryptography" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tool 1: Public-key Cryptography<a class="anchor-link" href="#Tool-1:-Public-key-Cryptography"> </a>
+</h3>
+<p>You use public-key cryptography (PKC) every day, for example while visiting this website 😊 PKC allows to encrypt and decrypt a message using two different keys. We call these the public key and the private key.</p>
+<p><strong>Example:</strong> You want people to be able to send messages to you. But you want to be sure that no one intercepts these messages. For this purpose, you can use software to generate two keys. A private key that you never share with anyone. And a public key that you can share with everyone. Why can you share the public key with anyone? Because the <strong>public key</strong> has a special ability: it can encrypt a message in a way that only your <strong>private key</strong> can decrypt. 
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> In the language of structured transparency, <strong>public-key cryptography</strong> is a one-way pipe from anyone in the world to you. It doesn’t let anyone else read, change, or process a message on the way to you. This is the simplest form of input privacy.</span>
+</div>
+Notice that this pair of keys is only useful for messages sent <strong>to</strong> you. If you want to send messages to other people, they need a pair of keys to encrypt messages only <strong>they</strong> can read. To communicate with a group of people, everyone in the group needs a copy of the public keys of each other.
+<div class="Toast Toast--tip">
+   <span class="Toast-icon"><svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg></span>
+   <span class="Toast-content"><b>Tip:</b> Are you using a non-encrypted messenger like Facebook Messenger or Telegram? This is a good time to switch to a secure alternative like <a href="https://signal.org/en/">Signal</a>! You can compare alternatives <a href="https://www.securemessagingapps.com/">here</a>.</span>
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Tool-2:-Homomorphic-Encryption-(HE)">
+<a class="anchor" href="#Tool-2:-Homomorphic-Encryption-(HE)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tool 2: Homomorphic Encryption (HE)<a class="anchor-link" href="#Tool-2:-Homomorphic-Encryption-(HE)"> </a>
+</h3>
+<p>Public-key cryptography can create a secure, one-way pipe from anyone in the world to you. However, all this pipe can do is copy information from the input of the pipe to the output of the pipe. While this is very important (for banking systems, the HTTPS protocol for web browsers, etc.), we want to expand this. What if you wanted to perform some kind of computation on this information? This is where encrypted computation comes into play.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> <strong>Encrypted computation</strong> means someone can compute over information, without even knowing the value of the information, because it is encrypted.</span>
+</div>
+<strong>Examples:</strong> spell-checking a document or translating a document from English to Spanish. Without knowing the contents of the documents!
+<p>Before 2009 this was completely impossible. The <a href="https://dl.acm.org/doi/10.1145/1536414.1536440">first algorithm</a> proposing <strong>Homomorphic Encryption</strong> was too slow for practical purposes. But modern techniques allow running any kind of program over encrypted data. Even intense tasks like sorting algorithms or  important machine learning algorithms have become efficient.
+</p>
+<div class="Toast Toast--important">
+   <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
+   <span class="Toast-content"><b>Important:</b> If you run a computation on <strong>homomorphically encrypted data</strong>, the results will always be encrypted with the same key as the input data.</span>
+</div>
+The big generic use case: you can use cloud machines without trusting cloud providers not to look at your data.
+<p>Users truly stay in control of their information. In the language of structured transparency: The input privacy guarantee is not only present over the transfer of data, like in a straight pipe. Instead, it also covers all additional transformation or computation steps in the middle of this pipe.
+</p>
+<div class="Toast Toast--tip">
+   <span class="Toast-icon"><svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg></span>
+   <span class="Toast-content"><b>Tip:</b> As a business providing cloud services: with homomorphic encryption, you can <strong>guarantee</strong> to your customers that you cannot see their data.</span>
+</div>
+This is also useful for <strong>storing information</strong>. Take your bank as an <strong>example:</strong> if they stored your information with homomorphic encryption, they would not know how much money you had. But you could still deposit and withdraw as usual.
+<p>HE is very <strong>general-purpose</strong>. Multiple people can take some information, encrypt it with a public key, and then run arbitrary programs on it. The outputs can only be decrypted by whoever has the corresponding private key.
+</p>
+<div class="Toast Toast--tip">
+   <span class="Toast-icon"><svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg></span>
+   <span class="Toast-content"><b>Tip:</b> The biggest changes will not come from just encrypting existing systems. They will come from new opportunities. Ask yourself: What could I never do until now, because sharing my data would be too risky?</span>
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Tool-3:-Secure-Multi-Party-Computation-(SMPC)">
+<a class="anchor" href="#Tool-3:-Secure-Multi-Party-Computation-(SMPC)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tool 3: Secure Multi-Party Computation (SMPC)<a class="anchor-link" href="#Tool-3:-Secure-Multi-Party-Computation-(SMPC)"> </a>
+</h3>
+<p></p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> <strong>Secure multi-party computation:</strong> Any algorithm wherein multiple people can calculate the outputs of a function, while keeping their inputs secret from each other. It’s a formal group of computational algorithms which satisfy input privacy.</span>
+</div>
+We take a closer look at an interesting one of those algorithms: <strong>Additive Secret Sharing</strong>. It is very powerful because it allows multiple people to share ownership of a number. This solves the <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/11/Our-Privacy-Opportunity-Part-2.html#The-Copy-Problem">copy problem</a>!
+<p>Let's look at an <strong>example.</strong> I have the number <code>5</code> which I want to encrypt. I have two friends, Alex and Bob. I can take the <code>5</code> and divide it into two shares, for example, a <code>-1</code> and a <code>6</code>. Notice that the sum of these shares still is <code>5</code>. But the shares themselves contain no information about the encrypted number they represent. We could as well have split it into <code>582</code> and <code>-577</code>. The numbers are random, but the <em>relationship between them</em> stores the number <code>5</code>.</p>
+<p>When I give Alex and Bob one of my two shares <code>-1</code> and <code>6</code>, neither of them will know which number is encrypted between them. The copy problem no longer applies! Neither Bob nor Alex could copy out the number <code>5</code> because they don't know they store the number <code>5</code>.</p>
+<p>With SMPC, no one can decrypt the number alone. All shareholders must agree that the number should be decrypted. It requires a 100% consensus. This is technically enforced <strong>shared governance</strong> over a number. Not enforced by some law, but by the maths under the hood.</p>
+<p>What is even more amazing: while this number is encrypted between Alex and Bob, they can <strong>perform calculations</strong> on it. Let's double our number. The shares <code>-1</code> and <code>6</code> would be transformed into <code>-2</code> and <code>12</code>. The sum of them would be <code>10</code>, so <code>5*2</code>✅</p>
+<p>The kicker: all programs are numerical operations. At the lowest level every text document, image file or video is just a large number. We could take each individual number and encrypt it across multiple people like Alex and Bob. A file, a program, or an entire operating system could be encrypted this way.</p>
+<p>For another example, take a look at <a href="https://www.inpher.io/technology/what-is-secure-multiparty-computation">this video</a>. There, SMPC is used to calculate the average salary of three employees, and they don't have to reveal their individual salaries.</p>
+<p><a href="#Homomorphic-Encryption-(HE">HE</a>) and SMPC are only two of many algorithms available for input privacy. Why do we need so many versions? The reason is: different algorithms run faster in different environments. SMPC requires high bandwidth to send the encrypted numbers between devices. But it needs only little computing power. HE on the other hand does not need high bandwidth, but it has to perform a lot of additional steps to perform calculations on encrypted data. So the optimal algorithm depends on your use case.</p>
+<figure class="image">
+<figure>
+  
+    <img class="docimage" src="/images/copied_from_nb/../images/articles/2021-openmined-pt3/he-vs-smpc.png" alt="" style="max-width: 500px">
+    
+    
+</figure>
+
+</figure>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Output-Privacy">
+<a class="anchor" href="#Output-Privacy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Output Privacy<a class="anchor-link" href="#Output-Privacy"> </a>
+</h2>
+<p>Even if an information flow perfectly satisfies <em>input privacy</em>, it can still leak information inside of its contents. While input privacy is mainly concerned with the copy problem, output privacy is mainly concerned with the <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/11/Our-Privacy-Opportunity-Part-2.html#The-Bundling-Problem">bundling problem</a>.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> <strong>Output privacy</strong> is about ensuring that certain subsets of information do not make it through the information flow.</span>
+</div>
+If I have an information flow with inputs and outputs, how much can I <strong>reverse engineer</strong> about the inputs by reading the outputs?
+<p><strong>Examples:</strong></p>
+<ul>
+<li>If I have the results of the US census, how much could I infer about any particular US citizen by analyzing the census?</li>
+<li>When I look at a drug survey, can I infer that an individual participant has a certain disease?</li>
+</ul>
+<p>Which parts of the content do we care about? It depends. The guarantee of output privacy can refer to any fact that can be conveyed in an information flow.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>While you are on the telephone with your boss, you might want to hide the fact that you are on a beach.</li>
+<li>When you participate in a medical study, you might want to stay anonymous, so that your insurance company cannot learn any risk factors of you.</li>
+<li>While on a video chat with friends, you might want to blur your background to hide the mess you're in.</li>
+</ul>
+<p>Contents matter! Output privacy is about giving you <strong>control over the contents</strong> you're sending to people. Unbundle what you want to share from what you don't want to share. And it's not only about the information you are sharing exactly. It's also about information people might use to infer other things about you.</p>
+<p><strong>Example:</strong> Did you know that analytics companies scrape and parse social media, <a href="https://www.brandwatch.com/image-insights/">looking for products and brands in your pictures</a>? You should be able to share what you want to say ("I'm enjoying life on the beach"), without revealing other details. For example, the bottle of medication on the table behind you. Photo post-processing that removes or blurs sensitive items is a great example of output privacy.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Differential-Privacy-(DP)">
+<a class="anchor" href="#Differential-Privacy-(DP)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Differential Privacy (DP)<a class="anchor-link" href="#Differential-Privacy-(DP)"> </a>
+</h3>
+<p>Differential privacy is a sophisticated tool for output privacy. It guarantees output privacy in a specific context: aggregate statistics over a large group of people. It tries to unbundle your participation in a survey from a scientist's ability to learn patterns about people who took part in the survey.</p>
+<p>To see how Differential Privacy works, let's construct an <strong>example</strong>. What if <a href="https://twitter.com/iamtrask">Andrew</a> wanted to calculate the average age of all participants of this course. A basic way to do this: everyone sends their age to Andrew. However, this would violate input privacy. Because even though Andrew is only interested in learning the average age (the desired output of the information flow), he'd be learning all the inputs in the process.
+But we can use input privacy like HE or SMPC to protect everyone's privacy, right? Andrew could calculate the average age without knowing the age of any particular student. It seems that output privacy <em>just happens</em> because input privacy is guaranteed.</p>
+<p>But what if Andrew was really clever and sent the survey again to everyone <em>but you</em>. To make the math easy, let's say there are <code>1,000</code> students in the course. Previously, the average age was <code>27.00</code>. But now, when he runs the survey again without you, the average age is <code>26.98</code>. Now he could calculate that you are <code>(1,000 * 27.00 - 999 * 26.98) = 47</code> years old. [In the Video, Andrew calculates that you were 20 years old. I'm pretty sure that's an error]</p>
+<p>Another type of attack: Andrew could also pretend to be the other 999 students. When he gets the final answer, he could  subtract the numbers he made up and figure out that you are <code>47</code> years old.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> When we homomorphically encrypt everyone’s answer, we <strong>probably</strong> get decent output privacy for free. But we don’t get a true <strong>guarantee</strong> of output privacy. Because a clever individual running the survey could learn about your personal information.</span>
+</div>
+Differential Privacy can turn such a scenario into a hard guarantee. No one can learn information about you from the average age. How does this work? Instead of sending your age, you first choose a random number between <code>-100</code> and <code>100</code> and add it to your age. So if you're <code>65</code> years old and randomly draw the number <code>-70</code>, you'd send Andrew the number <code>-5</code>. So if he reverse-engineered your input using the techniques described above, he'd only learn the number <code>-5</code> about you.
+<p>But doesn't this destroy the accuracy of the average age? Not if we have enough participants. Random numbers have an <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">interesting property</a>. If we randomly choose numbers between <code>-100</code> and <code>100</code>, the average of only a few numbers would be very noisy. But the more numbers we look at, the closer to <code>0</code> the average moves. If we had infinite numbers, the average would be exactly zero.
+</p>
+<div class="Toast Toast--important">
+   <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
+   <span class="Toast-content"><b>Important:</b> If you average over enough random numbers, the randomness cancels out.</span>
+</div>
+So if Andrew averages over enough people in the course, the noise of the random numbers cancels out and he ends up with the same answer. But if it's exactly the same answer, wouldn't the two attacks from before still work?
+<ol>
+<li>The first attack: One survey with you included, and another survey with you excluded. Andrew compares the results. Before, the difference between the surveys let him infer your exact age. Now, it is <code>your age</code> plus <code>your random number</code> plus <code>999 people's random numbers</code>. There is no way of telling your exact age.</li>
+<li>The second attack: Andrew pretends to be the other 999 people. Taking the numbers from above, he could only learn <code>-5</code> about you, which would tell him that you are between <code>0</code> and <code>95</code> years old - which is true for almost anybody.</li>
+</ol>
+<p><strong>Takeaway:</strong> Differential Privacy in this example allows Andrew to calculate the average age, without him being able to reverse engineer personal data. In the next section, we discuss DP in a bit more formal way.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Robust-Output-Privacy-Infrastructure">
+<a class="anchor" href="#Robust-Output-Privacy-Infrastructure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Robust Output Privacy Infrastructure<a class="anchor-link" href="#Robust-Output-Privacy-Infrastructure"> </a>
+</h3>
+<p>Output privacy is actually a bit more nuanced than we covered before. It's not a binary thing - is output privacy guaranteed or not. This becomes clear when we take another look at our previous example, the average age survey. What if we didn't add numbers between <code>-100</code> and <code>100</code>, but between <code>-2</code> and <code>2</code>? That would not be great privacy protection. While Andrew wouldn't know your exact age, he would have a pretty good idea.</p>
+<p>Output privacy is more like a degree of protection. The more randomness people add to their own data, the better the privacy protection. Differential Privacy lets us measure the <em>difference</em> between a strong privacy guarantee and a weak one. In our example, this is the measure between choosing numbers between <code>-100</code> and <code>100</code>, or between <code>-1</code> and <code>1</code>. In DP, this measurement is called <strong>Epsilon <code>ε</code></strong>.</p>
+<p><strong>Example:</strong> A medical research center has data of <code>3,000</code> patients. It wants to let outside researchers use their data to cure cancer. How can they make sure that researchers can't reverse engineer their statistical results back to the input medical records? By giving each researcher a <strong>privacy budget</strong>.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> <strong>Privacy budget</strong> is a measure that says: All your aggregate results that you generate from input data must represent less than <code>X ε</code> of information. <code>X</code> is a measure of maximum tolerance for information reconstruction risk.</span>
+</div>
+<ul>
+<li>When you are not too worried that someone might reconstruct your data, you can set <code>X</code> to <code>100</code>. If you're <em>really</em> worried, you can set it to <code>1</code> or even <code>0.1</code>. It does  not matter which specific algorithm a researcher uses, as long as it can be measured in <code>ε</code>. <code>ε</code> then provides a formal guarantee about the probability that a researcher can reconstruct your private data from their statistical results.</li>
+<li>Every researcher gets their <strong>own <code>ε</code></strong>. Say you had <code>10</code> researchers studying your patients. If every researcher had <code>20 ε</code>, could they team up and leak up to <code>200 ε</code>? In theory, they could do so if they combined their results in the right way. If you are sharing data very publicly, you should consider assigning a <strong>global <code>ε</code></strong> for all researchers. If you are working with selected researchers unlikely to share information, an individual privacy budget is fine.</li>
+<li>Think from the perspective of a patient. How does <code>ε</code> apply to you? Say you are at <code>2</code> hospitals and both of them share data with researchers. When both hospitals share <code>20 ε</code> worth of information about you, that means that in total <code>40 ε</code> could be leaked! Just because your hospital thinks they are not leaking private information about you, doesn't mean they are not.</li>
+</ul>
+<p><strong>Example:</strong> Netflix ran an ML competition and released a dataset of users and movie ratings. The dataset was anonymized, meaning no usernames or movie titles were present. This seems like good privacy protection - had <a href="https://www.imdb.com/">IMDb</a> not existed. They also keep large lists of users and movie ratings. It turns out, people often rate movies on both platforms at similar points in time. Researchers from the University of Texas showed that they could <a href="https://www.schneier.com/blog/archives/2007/12/anonymity_and_t_2.html">de-anonymize some of the Netflix data</a> using this approach. In the terms of DP: When Netflix released some <code>ε</code>, there was already an amount <code>ε</code> public from IMDb. Combined, it was enough <code>ε</code> that researchers could run a de-anonymization attack.</p>
+<p>The same attacks can be run on much more sensitive data than movie reviews, for example, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2076397">medical records</a> or your <a href="https://www.bbc.com/news/technology-40770393">browser history</a>. The amount of <code>ε</code> running around about you measures the probability that someone can reconstruct your private information from an anonymized dataset.</p>
+<p><code>ε</code> is a formal upper bound on the probability that bad things can happen to you if you participate in a statistical study. <em>Statistical study</em> is a very broad term. It includes using everyday products like Chrome, Firefox, or an Apple product. These companies study how people use their products by collecting anonymized usage data. You are protected in all this by DP, measured by some degree of <code>ε</code>.</p>
+<p>How much <code>ε</code> can we consider as safe? There is no single correct answer. But we can transform <code>ε</code> into a more useful number called <code>β</code>, where <code>β = e^ε</code>. Let's say you are deciding whether to participate in a medical study. The study guarantees that no more than <code>2 β</code> are released. What does this mean? Pick any event in your future, whether it's your insurance premiums going up or your partner leaving you. If <code>β</code> is <code>2</code>, then <code>β</code> guarantees that the new probability of this event, if you participate in the study, is <em>at most</em> <code>2</code> times the previous probability.</p>
+<p>Differential Privacy is constructed so that it does not care whether the event <em>seems</em> related. The probability that the event will happen, after you participate in the study, is <strong>no greater than <code>β</code> times the current probability</strong>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="To-be-continued">
+<a class="anchor" href="#To-be-continued" aria-hidden="true"><span class="octicon octicon-link"></span></a>To be continued<a class="anchor-link" href="#To-be-continued"> </a>
+</h2>
+<p>This lesson explored the concept of structured transparency. We took a closer look on the first two guarantees of structured transparency: Input privacy and output privacy.</p>
+<p>In the next summary, I'll cover the remaining guarantees: Input and output verification as well as flow governance. It will be online later this week.</p>
+<p>If you found a paragraph that needs improvement, please <a href="https://twitter.com/daflowjoe">let me know</a>! I'm also happy to hear from you if you found this summary helpful! 😊</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="JohannesStutz/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/19/Our-Privacy-Opportunity-Part-3.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Join me in my self-taught journey into deep learning.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/johannesstutz" title="johannesstutz"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/daflowjoe" title="daflowjoe"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
