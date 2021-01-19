@@ -13,18 +13,7 @@
 /* Set site-wide subtle background pattern */
 /* Background pattern from Toptal Subtle Patterns */
 body {
-	background: #fdfdfd; 
-	/* For the grey pattern, use:
-	url("/images/grey.png") */
-}
-
-/*  */
-article, .home {
-	/* White background and shadow for articles and home page
-	border: 1px solid #e8e8e8;
-	border-radius: 4px;
-	box-shadow: 0 3px 6px rgba(149,157,165,0.15) !important;
-	padding: 20px 40px;*/
+	color: #191308;
 }
 
 /* Reduce padding for mobile devices */
@@ -42,7 +31,6 @@ article, .home {
 /* Header */
 .site-header {
 	border-top: 0;
-	/*background-color: #FFCF52;*/
 	background-color: #FEFEFE;
 	font-family: Courier, Monaco, monospace;
 }
@@ -65,6 +53,57 @@ article, .home {
 table td {
     background-color: #fdfdfd;
 }
+
+/* Set text colors */
+.home, .post-content p, .post-content li, #notebook-container {
+	color: #191308; /*#515151;*/
+}
+
+pre, code {
+	background-color: #E6EFE9;
+}
+
+p code, code {
+	color: #0F7173;
+}
+
+/* Set link colors */
+
+a, a:visited {
+	color: #0F7173 !important;
+	text-decoration: underline !important; 
+}
+
+a:hover {
+	color: #0F7173 !important;
+	text-decoration: none !important;
+}
+
+.section-nav li a {
+	text-decoration: none !important;
+}
+
+a.category-tags-link {
+	color: #C1292E !important;
+	text-decoration: none !important;
+}
+
+.site-nav .page-link, a.site-title {
+	color: #191308 !important;
+}
+
+.site-nav .page-link, a.site-title, a.post-link {
+	text-decoration: none !important;
+}
+
+.site-nav .page-link:hover, a.site-title:hover, a.post-link:hover {
+	text-decoration: underline !important;
+}
+
+.site-nav .page-link {
+	font-size: 17px;
+}
+
 
 /* Tweaks to syntax highlighting */ 
 .language-python + .language-plaintext {
@@ -99,7 +138,14 @@ h3, h4 { margin-top: 2.5rem !important; }
 /* Reduce font size in normal text a bit */
 .home, .post-content p, .post-content li, #notebook-container, p code, code {
 	font-size: 17px !important;
-	color: #515151;
+}
+
+.highlight pre, .highlight code {
+	font-size: 17px !important;
+}
+
+.post figcaption {
+	font-size: 0.9rem !important;
 }
 
 /* Fix vertical margins of lists */
@@ -113,7 +159,7 @@ li ul, li ol {
 
 /* Change footer to play nicely with skyline */
 .site-footer {
-	background: #000;
+	background: #191308;
 	border-top: 0;
 	padding: 45px 0;
 }
@@ -138,7 +184,7 @@ li ul, li ol {
 
 .Toast--warning .Toast-icon {
 	color: #fff !important;
-	background-color: #e54000 !important; /* #f9c513; original yellow */
+	background-color: #C1292E !important; /* #e54000 brighter red */
 }
 
 .Toast--important .Toast-icon {
@@ -147,10 +193,11 @@ li ul, li ol {
 }
 
 .Toast--tip .Toast-icon {
-	background-color: #009600 !important;
+	background-color: #6BBF59 !important; /* #009600 punchy green */
 }
 
+/* Note */
 .Toast-icon {
 	color: #fff !important;
-	background-color: #0366d6 !important;
+	background-color: #0F7173  !important; /* #0366d6 punchy blue */
 }
