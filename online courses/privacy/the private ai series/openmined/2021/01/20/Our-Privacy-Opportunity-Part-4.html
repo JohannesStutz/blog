@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>The Private AI Series, Course 1, Part 4 | Deep Learning Berlin</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="The Private AI Series, Course 1, Part 4" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Further guarantees of Structured Transparency: Input and output verification, flow governance. More course notes on lesson 4." />
+<meta property="og:description" content="Further guarantees of Structured Transparency: Input and output verification, flow governance. More course notes on lesson 4." />
+<link rel="canonical" href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/20/Our-Privacy-Opportunity-Part-4.html" />
+<meta property="og:url" content="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/20/Our-Privacy-Opportunity-Part-4.html" />
+<meta property="og:site_name" content="Deep Learning Berlin" />
+<meta property="og:image" content="https://deeplearning.berlin/images/articles/2021-openmined-pt4/thumbnail.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-20T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/20/Our-Privacy-Opportunity-Part-4.html","@type":"BlogPosting","headline":"The Private AI Series, Course 1, Part 4","dateModified":"2021-01-20T00:00:00-06:00","datePublished":"2021-01-20T00:00:00-06:00","image":"https://deeplearning.berlin/images/articles/2021-openmined-pt4/thumbnail.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/20/Our-Privacy-Opportunity-Part-4.html"},"description":"Further guarantees of Structured Transparency: Input and output verification, flow governance. More course notes on lesson 4.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://deeplearning.berlin/feed.xml" title="Deep Learning Berlin" />
+
+<script async defer data-domain="deeplearning.berlin" src="https://plausible.io/js/plausible.js"></script><!--<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">-->
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+<link rel="manifest" href="/images/icons/site.webmanifest">
+<link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg" color="#5bbad5"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/"><img src="/images/icons/bear-yellow-transp-bg.png"/>Deep Learning Berlin</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About Me</a><a class="page-link" href="/search/">Search</a><a class="page-link" href="/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">The Private AI Series, Course 1, Part 4</h1><p class="page-description">Further guarantees of Structured Transparency: Input and output verification, flow governance. More course notes on lesson 4.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-01-20T00:00:00-06:00" itemprop="datePublished">
+        Jan 20, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      16 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/categories/#online courses">online courses</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#privacy">privacy</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#the private ai series">the private ai series</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#openmined">openmined</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Continueing-Structured-Transparency">Continueing Structured Transparency </a></li>
+<li class="toc-entry toc-h2"><a href="#Input-Verification">Input Verification </a></li>
+<li class="toc-entry toc-h2"><a href="#Technical-Tools-for-Input-Verification">Technical Tools for Input Verification </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Tool-1:-Cryptographic-Signatures">Tool 1: Cryptographic Signatures </a></li>
+<li class="toc-entry toc-h3"><a href="#Tool-2:-Active-Security-&-Zero-Knowledge-Proofs">Tool 2: Active Security &amp; Zero-Knowledge Proofs </a></li>
+<li class="toc-entry toc-h3"><a href="#Public/private-key-pairs-for-groups-of-people">Public/private key pairs for groups of people </a></li>
+<li class="toc-entry toc-h3"><a href="#Reputation">Reputation </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Output-Verification">Output Verification </a></li>
+<li class="toc-entry toc-h2"><a href="#Flow-Governance">Flow Governance </a></li>
+<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-01-20-Our-Privacy-Opportunity-Part-4.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Continueing-Structured-Transparency">
+<a class="anchor" href="#Continueing-Structured-Transparency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Continueing Structured Transparency<a class="anchor-link" href="#Continueing-Structured-Transparency"> </a>
+</h2>
+<p><a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/08/Our-Privacy-Opportunity-Part-1.html">Part 1 of my summary</a> of the Private AI series was all about information flows and how they are fundamental to our society. We also learned about how information flows are often broken today because of the privacy-transparency trade-off.</p>
+<p>In <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/11/Our-Privacy-Opportunity-Part-2.html">Part 2</a>, we discussed which technical problems exactly are underlying the privacy-transparency trade-off.</p>
+<p>In <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/19/Our-Privacy-Opportunity-Part-3.html">Part 3</a>, we learned about solutions. Structured transparency lets us analyze privacy issues in a structured way. We learned about input and output privacy, two of the five guarantees of structured transparency.</p>
+<p>In Part 4, we continue with structured transparency, covering input and output <strong>verification</strong> as well as flow governance.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Input-Verification">
+<a class="anchor" href="#Input-Verification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Input Verification<a class="anchor-link" href="#Input-Verification"> </a>
+</h2>
+<p>We learned about how input and output privacy can help you hiding information you don't want to share. But how do we know that information from such a well-hidden information flow is true?</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>If a data scientist can't look at her data, how does she know what it looks like?</li>
+<li>A police officer wants to check if a driver is of legal age. He would usually look at the driver's license. This comes bundled with all kinds of information: date of birth, photo, license ID, address... When all he has to know is that YES, you are allowed to drive. But how could he verify a card that only said YES?</li>
+</ul>
+<p>The driver's license is a good example of <strong>internal consistency</strong>. It makes it hard to create fake documents, videos, or money. It also makes it hard to pretend you're someone else in real life.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> <strong>Internal consistency</strong> refers to someone in the real world recognizing <strong>how things usually look like.</strong></span>
+</div>
+<strong>Example:</strong> You receive a banknote that was printed on a regular printer. You would immediately feel that something is not right, even if the layout etc. is correct.
+<p>Internal consistency is one of humanity's most powerful tools for communicating trust. But this approach to verify information has two problems.</p>
+<ol>
+<li>With enough effort, internal consistency can be faked. From classic approaches like <a href="https://en.wikipedia.org/wiki/Counterfeit_United_States_currency">faking dollar bills</a> to modern, AI-based techniques called <a href="https://youtu.be/l82PxsKHxYc?t=21">deepfakes</a>.</li>
+<li>It requires sending way more information than is necessary to communicate. It has data leakage built-in!</li>
+</ol>
+<p>We need tools that allow verifying a piece of information. In a way that it a) can't be faked and b) does not require revealing any extra information.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Technical-Tools-for-Input-Verification">
+<a class="anchor" href="#Technical-Tools-for-Input-Verification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technical Tools for Input Verification<a class="anchor-link" href="#Technical-Tools-for-Input-Verification"> </a>
+</h2>
+<h3 id="Tool-1:-Cryptographic-Signatures">
+<a class="anchor" href="#Tool-1:-Cryptographic-Signatures" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tool 1: Cryptographic Signatures<a class="anchor-link" href="#Tool-1:-Cryptographic-Signatures"> </a>
+</h3>
+<p>When you look at the top left of your browser, you probably see a little padlock 🔒. This symbolizes one of the most extraordinary input verification technologies ever deployed. When you enter a URL in your browser, hundreds of computers and network switches and cables help you find the right files. What if only one of these machines lied and sent you an altered version of the website? Would you notice it, if the website looked just as you expected?</p>
+<p>This is called a man-in-the-middle attack. It is one of the most important input verification problems.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> A <strong>man-in-the-middle attack</strong> is when someone gets between you and another party and alters messages you are exchanging.</span>
+</div>
+This kind of attack is impossible when the little lock 🔒 in your browser appears. It means that your communication with a server is encrypted with <a href="https://en.wikipedia.org/wiki/HTTPS">HTTPS</a>.
+<p>HTTPS is an example of the most important tool for input verification: A cryptographic signature.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> A <strong>cryptographic signature</strong> allows someone to sign a document with a mark that only they could make.</span>
+</div>
+It has a significant advantage over real-life signatures. It cannot be copied! Remember <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/19/Our-Privacy-Opportunity-Part-3.html#Tool-1:-Public-key-Cryptography">public-key cryptography</a>? The public key lets you encrypt something that only the private key can decrypt.
+<p>Cryptographic signatures are like this, too. You can sign any digital document with your <strong>private key</strong>. It does not matter where these documents go. Anyone who receives the signed document can verify with your <strong>public key</strong> that it is in fact your document.</p>
+<p>What does it mean to "sign" a digital document, an image, an audio file? Signatures are just a mark. They are attached to an object, affiliating this object to you. What keeps a signature attached to this object? Digital signatures are actually a second file that you are sending with a document. We call this second file the <strong>certificate</strong>. You need the certificate to guarantee that this document is yours.</p>
+<p>When you enter google.com in your browser - how do you know the page you receive is actually from google.com? Couldn't anyone copy the public key (it's public, after all)? This is what a <strong>certificate authority</strong> is for. It provides a big list of domain names and associated public keys, called certificates. When you receive a webpage that's supposed to be from google.com, your browser checks its signature using the public key from the registry.</p>
+<p>How do we know that a signature is associated with this particular file, and that nobody altered the file? For this, we need to know what a <strong>hash</strong> is.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> A <strong>hash</strong> is a way to convert any kind of digital object into a single big number. It is deterministic, which means: no matter who calculates the hash, the same document will always result in the same hash.</span>
+</div>
+If you change even one letter in a text document or one pixel in an image file, the hash will be completely different! When google.com signs a website before sending it to you, this is what it actually does. It hashes the big page into a single number. When it creates a signature, it's a signature for <em>that number</em>. It is unique for this page!
+<div class="Toast Toast--tip">
+   <span class="Toast-icon"><svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg></span>
+   <span class="Toast-content"><b>Tip:</b> If this was not clear or you want to gain a better understanding of cryptographic signatures, please check out <a href="https://www.youtube.com/watch?v=T4Df5_cojAs">this great video</a></span>
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Tool-2:-Active-Security-&amp;-Zero-Knowledge-Proofs">
+<a class="anchor" href="#Tool-2:-Active-Security-&amp;-Zero-Knowledge-Proofs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tool 2: Active Security &amp; Zero-Knowledge Proofs<a class="anchor-link" href="#Tool-2:-Active-Security-&amp;-Zero-Knowledge-Proofs"> </a>
+</h3>
+<p>From a structured transparency perspective, cryptographic signatures are only good for a single, <strong>straight pipe</strong> of information. Any alterations of the content would corrupt the message. This is good in case a hacker messed with your data. But it also prevents us from performing any useful computations along the way. What we want is a tool that allows transformation of the data, but only in a very specific way. How would input verification work in such a case?</p>
+<p>We look at two of the many techniques looking to verify a flow and its inputs.</p>
+<ol>
+<li>Zero-Knowledge Proofs</li>
+<li>Encrypted computation (like HE or SMPC) with Active Security</li>
+</ol>
+<p><strong>Example:</strong> Your country holds an election. When you see the big number on the TV screen, counting the votes: How can you be sure that your vote was counted?
+<strong>Goal:</strong> We need something like a super-signature for the result. This would allow to proof that all inputs were used in the calculation of the final result. Every voter could check - with their public key - if their signed vote was included.</p>
+<p>This is the idea behind encrypted communication with active security or zero-knowledge proofs. If a computation is agreed upon, then a signature can be created when information is processed in an information flow. There is cryptographic evidence allowing anyone who participated in the computation that their input was included in the final result.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> While these technologies exist, using them at the scale of an actual vote would be extremely challenging today. It is still ongoing research work.</span>
+</div>
+These concepts are not only applicable to simple computations like voting, but also for complex tasks like machine learning algorithms. You could have proof that your data was processed by a fair algorithm.
+<h3 id="Public/private-key-pairs-for-groups-of-people">
+<a class="anchor" href="#Public/private-key-pairs-for-groups-of-people" aria-hidden="true"><span class="octicon octicon-link"></span></a>Public/private key pairs for groups of people<a class="anchor-link" href="#Public/private-key-pairs-for-groups-of-people"> </a>
+</h3>
+<ol>
+<li>In previous lessons, we learned about private/public keys. One key pair was always linked to one person. But a key could also proof your anonymous identity. Think of it like a username: it can be anonymous, but represents the same person every time.</li>
+<li>There can be an infinite amount of key pairs. Those could be used not only by individuals, but by groups of people. Like all doctors in your town or everyone who is a English/Spanish interpreter. These public/private key pairs could allow you to proof that you are a member of a group, without revealing which member exactly you are.</li>
+</ol>
+<p>Your real-life signature is tied to your identity. In contrast, cryptographic signatures don't have to be this way. They can be used to verify only specific attributes about you. Returning to our popular bar example: you could have a private key which proofs that you are of legal age to drink. If the bartender asked you for ID, you could prove that you are a member of the group that is over a certain age. Without having to reveal all the private information on your ID card.</p>
+<p>This is input privacy and input verification at the same time!</p>
+<p><strong>Question:</strong> <em>One thing that isn't clear to me: What if the private key gets stolen or someone shares it with a person outside the group? When the group is large enough, isn't it very probable that the key would leak? Please <a href="https://twitter.com/daflowjoe">let me know</a> if you have any thoughts on that.</em></p>
+<h3 id="Reputation">
+<a class="anchor" href="#Reputation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reputation<a class="anchor-link" href="#Reputation"> </a>
+</h3>
+<p>A new concept: here we don't mean reputation not for people for companies, but the reputation for a verified input. This is a topic of active research, but it's supposed to inspire creativity.</p>
+<p><strong>Example:</strong> You are a data scientist and you are connected to a <strong>network of data owners</strong>. Let's say there are <code>635</code> data owners who claim to have data on breast cancer. But because it's private data, you're not allowed to actually look at this data. Even though you can't see the data, they want to charge you <code>10$/day</code> to train your ML model. How do you decide which one of these <code>635</code> owners you trust? What would prevent anyone from attaching themselves to the network and pretending to have data on breast cancer?</p>
+<ol>
+<li>Some of them might be <strong>entities you know and trust</strong>. Let's say <code>40</code> of the data owners were well-known hospitals. They can prove their identity via a signature and have a brand they don't want to damage, so you can trust their data.</li>
+<li>What about the other <code>595</code> data owners? Well, if you are the first person using a private dataset, <strong>you can't know</strong>. You just have to try it. The data owner should probably let you do so for free.</li>
+</ol>
+<p>Let's say you are the first person to use data owner <code>346</code>'s dataset on breast cancer. You train an ML model, validate it with a known dataset, and it does pretty well. <code>346</code> had some useful data! You leave a review: "The dataset worked". You sign it with your private key. You could even leave cryptographic proof that <em>you</em> did the analysis and which accuracy you achieved. The second, third, fourth, ... person comes along and sees your review. They can try the dataset for themselves and leave a review as well. They are all co-signing the same statement: This dataset, which you cannot see, is actually good. As the dataset becomes more verified, its price should increase.</p>
+<p>What if there hadn't been a trusted dataset to evaluate with? Wasn't it lucky that a hospital had a similar dataset you could trust and compare? The solutions to this problem are complex, but there are ways to deal with it. This category of solutions is called <strong>endorsements through a social network</strong>.
+</p>
+<div class="Toast Toast--important">
+   <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
+   <span class="Toast-content"><b>Important:</b> You cannot invent trust out of nowhere. But you can take small amounts of trust and scale that trust to an entire community. </span>
+</div>
+Humanity is very connected. On LinkedIn, there is a feature that shows the degree of connection to other people. 1st degree connections are the people in your contact list. 2nd degree connections are the people your contacts have as 1st degree connections. Similar approaches could work to estimate whether an anonymous review or signature is real. You could look at the connections of this signature to people you actually know. If you can't find any connections, then it probably is fake.
+<p>This is futuristic, but it shows how much trust and collaboration we can build as these tools make progress.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Output-Verification">
+<a class="anchor" href="#Output-Verification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Output Verification<a class="anchor-link" href="#Output-Verification"> </a>
+</h2>
+<p></p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> <strong>Output verification</strong> asks: how do we verify that the outputs from a hidden information flow contain the properties we want?</span>
+</div>
+Output verification is one of the most important components of structured transparency. It allows you to verify that an algorithm, that's affecting your life, is actually good.
+<p>Machine learning models are often difficult to fully understand. They also can produce <a href="https://towardsdatascience.com/real-life-examples-of-discriminating-artificial-intelligence-cae395a90070">very biased results</a>.
+</p>
+<div class="Toast Toast--tip">
+   <span class="Toast-icon"><svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg></span>
+   <span class="Toast-content"><b>Tip:</b> I can highly recommend <a href="https://course.fast.ai/videos/?lesson=5">Rachel Thomas’ lesson on Data Ethics</a> from fast.ai. It is a great introduction on the topic of Bias in AI.</span>
+</div>
+If we want to use algorithms, we need a way to test and <strong>audit an algorithm's performance</strong>. Fairness &amp; Bias in ML are an area of active research and they are very important. For ethical reasons first, but also for legal reasons. An example is the automatic processing of applications at some companies. The algorithm must now lower the chances for someone because their gender, race, etc. are historically underrepresented in the dataset.
+<p>This is a complex challenge. Let's cover some of the highlights.</p>
+<p>Think about a world without digital tools, when all decisions were made by humans. Do we know that any particular decision was <strong>made in a fair way</strong>? If a person is following a procedure, we can analyze the procedure. But if a person simply makes a decision, it can be difficult to prove that this was an unfair decision, i.e., a gender-based decision.</p>
+<p>How has society responded to human brains being black boxes and the bias of human judgement? We have laws. We have procedures for what people are and aren't allowed to do. A formal policy, <strong>a set of procedures someone has to follow</strong> to ensure their decisions are fair and just. It's not perfect, but it brings the decision-making process into the open.</p>
+<p>In the long run, <strong>algorithms have the potential to be more transparent</strong> and more consistent than humans. However: most of the decisions humans make today are not ready for algorithms to take over. Algorithms are not accurate enough yet. But while the early use of algorithms has made mistakes regarding fairness and bias, Andrew is optimistic. The long-term potential for more fairness, transparency, and accountability is promising. Because algorithms are easier to audit than a person.</p>
+<p>How to certify algorithms that we can't look at, because they're private?</p>
+<ol>
+<li>Let trusted third parties or regulators audit them. Example: The Coca Cola recipe is famously secret, but <em>someone</em> from the government had to certify that it's safe. But there will not be a regulator for every possible case. That brings us to the second point:</li>
+<li>Construct a new private information flow to evaluate the algorithm. Use a different algorithm to evaluate this one. Use input and output privacy techniques to analyze the algorithm. You could measure how accurate, fair, safe, ... an algorithm is, without having access to the algorithm itself.</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Flow-Governance">
+<a class="anchor" href="#Flow-Governance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flow Governance<a class="anchor-link" href="#Flow-Governance"> </a>
+</h2>
+<p>Setting up an ideal information flow is not enough. If anyone could change the guarantees, that would be a problem. Who should have permission to change the guarantees? This is regarding input/output privacy as well as input/output verification.
+</p>
+<div class="Toast Toast--important">
+   <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
+   <span class="Toast-content"><b>Important:</b> Without proper governance mechanisms, the integrity of the other guarantees are at risk.</span>
+</div>
+There are different forms of governance:
+<ul>
+<li>
+<strong>Unilateral governance:</strong> An example is simple <strong>public-key encryption</strong>. I encrypt my message with your public key and send it to you. This is now an object only governed by you. Nobody else could use the information within the message. <strong>Homomorphic encryption</strong> is slightly different. If somebody sends me homomorphically encrypted information, I have <em>some</em> governance over it. I can't read it, but I can modify it, perform calculations on it. Nevertheless, it is controlled by only one person, the private-key holder.</li>
+<li>
+<strong>Consensus governance:</strong> Remember <strong>additive secret-sharing</strong> from <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/19/Our-Privacy-Opportunity-Part-3.html#Tool-3:-Secure-Multi-Party-Computation-(SMPC">SMPC</a>)? Where a number was encrypted between multiple shareholders. Someone could only perform calculations on the number or decrypt it if <strong>all</strong> shareholders decided to allow it. Each shareholder has veto power.</li>
+<li>
+<strong>Threshold schemes:</strong> These allow for decisions with a democratic majority. SMPC and HE can both be configured this way. You can even set an arbitrary threshold. If a percentage of shareholders larger than this threshold wants to do something, they'll have enough cryptographic permission to do it. This can mean running a computation, decrypting an output, adding a shareholder, ...</li>
+</ul>
+<p>Why is this so powerful? All these fancy tools rely on trust. Nobody is perfectly trustworthy. But it's possible to design systems where people are more likely to work together. Groups of people, with checks and balances and control over each other.</p>
+<p>An <strong>example</strong> where distributing governance over a number is especially useful: You want to store all your photos in the cloud. You could split the photos into two or more shares (SMPC), and give them to different cloud providers. You could still use their services but unless they all decided to collude, they couldn't use your information.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> These tools are still in development and might not work in every practical use case.</span>
+</div>
+Being able to share data in SMPC state is a genuine solution to the Recursive Enforcement Problem. Having information split between multiple people, with everyone having a veto power to prevent misuse, alleviates the recursive enforcement problem.
+<p>These tools give us incredible new options. But they aren't useful until we use them in systems that match the strenghts and weaknesses of humans. Computer scientists and social scientists will have to collaborate!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conclusion">
+<a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
+</h2>
+<p>This lesson explored the remaining three guarantees of structured transparency: Input Verification, Output Verification, and Flow Governance.</p>
+<p>Thank you for reading, and as always: please <a href="https://twitter.com/daflowjoe">let me know</a> if you found this summary helpful or if there is anything you found unclear 😊</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="JohannesStutz/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/20/Our-Privacy-Opportunity-Part-4.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Join me in my self-taught journey into deep learning.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/johannesstutz" title="johannesstutz"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/daflowjoe" title="daflowjoe"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
