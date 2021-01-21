@@ -13,7 +13,7 @@
 /* Set site-wide subtle background pattern */
 /* Background pattern from Toptal Subtle Patterns */
 body {
-	color: #191308;
+	color: #191308 !important;
 }
 
 /* Reduce padding for mobile devices */
@@ -31,8 +31,11 @@ body {
 /* Header */
 .site-header {
 	border-top: 0;
-	background-color: #FEFEFE;
-	font-family: Courier, Monaco, monospace;
+}
+
+.site-title {
+	font-weight: 400 !important;
+	letter-spacing: normal !important;
 }
 
 .site-title img {
@@ -42,11 +45,7 @@ body {
 
 /* Add skyline background at the bottom */
 .page-content {
-	/*background-image: url("/images/skyline_v2.png");
-	background-size: 85%;
-	background-repeat: no-repeat;
-	background-position: center bottom;*/
-	padding: 30px 0 10% 0;
+	padding: 30px 0;
 }
 
 /* Assign light grey to every table cell. Table header is defined in theme css. */
@@ -159,18 +158,35 @@ li ul, li ol {
 
 /* Change footer to play nicely with skyline */
 .site-footer {
-	background: #191308;
 	border-top: 0;
 	padding: 45px 0;
 }
 
-.social-media-list li a {
-    background: #ddd;
-    border: 1px solid #bbb;
+.footer-col {
+	text-align: center;
 }
 
-.site-footer a {
-    color: #828282;
+/* Social media links */
+
+.social-media-list .svg-icon {
+	width: 35px !important;
+	height: 35px !important;
+	padding: 0px !important;
+	color: #585858;
+}
+
+.social-media-list .svg-icon:hover {
+	color: #0F7173;
+}
+
+.social-media-list li {
+	margin: 5px 20px 5px 0;
+}
+
+.social-media-list li a {
+	background: none;
+	border: none;
+	padding: 0;
 }
 
 /* Define boxes */
