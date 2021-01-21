@@ -4,7 +4,7 @@ title: About Me
 permalink: /about/
 ---
 
-I am learning and writing about how machines can learn. My interest in all things AI began with my fascination with Tesla's Autopilot software. Would it actually be possible for a car to drive itself in every situation?
+My name is Johannes Stutz. I am learning and writing about how machines can learn. My interest in all things AI began with my fascination with Tesla's Autopilot software. Would it actually be possible for a car to drive itself in every situation?
 
 I wanted to learn more about the technology behind this and have embarked on a journey into machine learning. Since I don't have a professional background in coding or computer science, I go with "learning by doing". This approach is especially endorsed by [fast.ai's](https://www.fast.ai/) great online courses.
 

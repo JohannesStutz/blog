@@ -7,7 +7,7 @@
 # https://learnxinyminutes.com/docs/yaml/
 
 title: Deep Learning Berlin
-description: Join me in my self-taught journey into deep learning.
+description: I'm Johannes Stutz, I blog about my learning journey into AI.
 github_username: JohannesStutz
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "blog"
@@ -41,7 +41,6 @@ minima:
   social_links:
     twitter: daflowjoe
     github: johannesstutz
-
 # Set this to true to get LaTeX math equation support
 use_math: 
 
