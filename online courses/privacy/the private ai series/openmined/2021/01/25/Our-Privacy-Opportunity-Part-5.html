@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>The Private AI Series, Course 1, Part 5 | Deep Learning Berlin</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="The Private AI Series, Course 1, Part 5" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The impact of structured transparency. How structured transparency can solve the problems of different groups. Take advantage of the arising opportunities. Course notes on lesson 5." />
+<meta property="og:description" content="The impact of structured transparency. How structured transparency can solve the problems of different groups. Take advantage of the arising opportunities. Course notes on lesson 5." />
+<link rel="canonical" href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/25/Our-Privacy-Opportunity-Part-5.html" />
+<meta property="og:url" content="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/25/Our-Privacy-Opportunity-Part-5.html" />
+<meta property="og:site_name" content="Deep Learning Berlin" />
+<meta property="og:image" content="https://deeplearning.berlin/images/articles/2021-openmined-pt5/thumbnail.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-25T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/25/Our-Privacy-Opportunity-Part-5.html","@type":"BlogPosting","headline":"The Private AI Series, Course 1, Part 5","dateModified":"2021-01-25T00:00:00-06:00","datePublished":"2021-01-25T00:00:00-06:00","image":"https://deeplearning.berlin/images/articles/2021-openmined-pt5/thumbnail.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/25/Our-Privacy-Opportunity-Part-5.html"},"description":"The impact of structured transparency. How structured transparency can solve the problems of different groups. Take advantage of the arising opportunities. Course notes on lesson 5.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://deeplearning.berlin/feed.xml" title="Deep Learning Berlin" />
+
+<script async defer data-domain="deeplearning.berlin" src="https://plausible.io/js/plausible.js"></script><link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png?v=ngjooeK8Pm">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png?v=ngjooeK8Pm">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png?v=ngjooeK8Pm">
+<link rel="manifest" href="/images/icons/site.webmanifest?v=ngjooeK8Pm">
+<link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg?v=ngjooeK8Pm" color="#f9c513">
+<link rel="shortcut icon" href="/images/icons/favicon.ico?v=ngjooeK8Pm">
+<meta name="msapplication-TileColor" content="#f9c513">
+<meta name="msapplication-config" content="/images/icons/browserconfig.xml?v=ngjooeK8Pm">
+<meta name="theme-color" content="#f9c513"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/"><img src="/images/icons/friendly-bear.png"/>Deep Learning Berlin</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About Me</a><a class="page-link" href="/search/">Search</a><a class="page-link" href="/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">The Private AI Series, Course 1, Part 5</h1><p class="page-description">The impact of structured transparency. How structured transparency can solve the problems of different groups. Take advantage of the arising opportunities. Course notes on lesson 5.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-01-25T00:00:00-06:00" itemprop="datePublished">
+        Jan 25, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      20 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/categories/#online courses">online courses</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#privacy">privacy</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#the private ai series">the private ai series</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#openmined">openmined</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#The-Impact-of-Structured-Transparency">The Impact of Structured Transparency </a></li>
+<li class="toc-entry toc-h2"><a href="#Academic-Research">Academic Research </a></li>
+<li class="toc-entry toc-h2"><a href="#Industry,-Research-&-Development">Industry, Research &amp; Development </a></li>
+<li class="toc-entry toc-h2"><a href="#Consumers">Consumers </a></li>
+<li class="toc-entry toc-h2"><a href="#News-Media">News Media </a></li>
+<li class="toc-entry toc-h2"><a href="#Machine-Learning-Startups">Machine Learning Startups </a></li>
+<li class="toc-entry toc-h2"><a href="#Consumers-Need-Structured-Transparency-Institutions">Consumers Need Structured Transparency Institutions </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Economic-Perspective">Economic Perspective </a></li>
+<li class="toc-entry toc-h3"><a href="#Public-Safety-Perspective">Public Safety Perspective </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Intelligence-Agencies,-Statistical-Services">Intelligence Agencies, Statistical Services </a></li>
+<li class="toc-entry toc-h2"><a href="#Regulators">Regulators </a></li>
+<li class="toc-entry toc-h2"><a href="#The-Next-Steps-for-Structured-Transparency">The Next Steps for Structured Transparency </a></li>
+<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-01-25-Our-Privacy-Opportunity-Part-5.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-Impact-of-Structured-Transparency">
+<a class="anchor" href="#The-Impact-of-Structured-Transparency" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Impact of Structured Transparency<a class="anchor-link" href="#The-Impact-of-Structured-Transparency"> </a>
+</h2>
+<p><a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/08/Our-Privacy-Opportunity-Part-1.html">Part 1 of my summary</a> of the Private AI series was all about information flows and how they are fundamental to our society. We also learned about how information flows are often broken today because of the privacy-transparency trade-off.</p>
+<p>In <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/11/Our-Privacy-Opportunity-Part-2.html">Part 2</a>, we discussed which technical problems exactly are underlying the privacy-transparency trade-off.</p>
+<p>In <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/19/Our-Privacy-Opportunity-Part-3.html">Part 3</a>, we learned about solutions. Structured transparency lets us analyze privacy issues in a structured way. We learned about input and output privacy, two of the five guarantees of structured transparency.</p>
+<p>In <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/20/Our-Privacy-Opportunity-Part-4.html">Part 4</a>, we continued with structured transparency. Covering input and output verification as well as flow governance.</p>
+<p>In Part 5, we learn about the groups who will be affected by these new techniques. We have to understand their motivations and pain points to predict how they will respond. This will prepare you to <strong>take advantage of the opportunities</strong> that are arising.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Academic-Research">
+<a class="anchor" href="#Academic-Research" aria-hidden="true"><span class="octicon octicon-link"></span></a>Academic Research<a class="anchor-link" href="#Academic-Research"> </a>
+</h2>
+<p>The primary motiviation of researchers: answering important, impactful questions. To answer these questions, researchers need access to quality information. This need for data makes collaboration between researchers important. But once a researcher shares a copy of their data, it becomes difficult to control what others do with it. The <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/11/Our-Privacy-Opportunity-Part-2.html#The-Copy-Problem">copy problem</a>. That's why collaboration today is often very slow.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> The goal is to create <strong>simple workflows</strong> for maximizing research use of data, while minimizing the risk of misuse.</span>
+</div>
+Structured transparency tools allow better information flows. Here, it ideally would allow researchers to answer their specific questions, while the data owner maintained control over the data. This works because researchers don't necessarily need a copy of the data. They only need to know the results of their analysis, i.e., the outputs of an ML model or the average of a value.
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>How does each component of structured transparency apply to researchers?</p>
+<ul>
+<li>
+<strong>Input Privacy:</strong> SMPC allows collaboration without sharing plain-text data</li>
+<li>
+<strong>Output Privacy:</strong> data owners could prevent reverse-engineering of the outputs of a computation, using Differential Privacy. Larger datasets can make it easier to ensure this.</li>
+<li>Input and output privacy will be enough for most research collaborations since there is trust between the actors.</li>
+<li>
+<strong>Input Verification:</strong> If trust was lacking, input verification techniques could be used. They would allow a data owner to prove specific attributes of the dataset to the researcher.</li>
+<li>
+<strong>Output Verification:</strong> might be required if there is competition between institutions. Could be used to prove that a statistical result was actually computed by the data owner using the computations requested by the researcher.</li>
+<li>
+<strong>Flow Governance:</strong> allows data owners to make extra sensitive data available for appropriate research. Distributing control across third parties like funding bodies or consortiums.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="Toast Toast--important">
+   <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
+   <span class="Toast-content"><b>Important:</b> More data available will lead to an increase in pace and quality of research in all empirically driven fields.</span>
+</div>
+There are two reasons that researchers will adopt privacy-preserving technologies. Researchers want their research to be impactful. <strong>Impact is a key feature</strong> for grant applications.
+<ol>
+<li>More access to data will lead to better research results. This can increase impact in comparison with a result only from self-collected data.</li>
+<li>Grants tend to favor projects that use cutting-edge methods. Privacy-preserving tools will be cutting edge for quite a while.</li>
+</ol>
+<p>Researchers have already started adopting these tools and making them available for other researchers. One example for medical imaging applications: <a href="https://g-k.ai/PriMIA/">PriMIA</a>.</p>
+<p><strong>Why is access to more data important?</strong> Because we want to create AI systems that people can trust. For this, it is important that we have representative and unbiased data available to train on. It should represent the entire spectrum of what you find in real patients. The algorithms should also be universally useful. They should be applicable to people of all genders and ethnic backgrounds.</p>
+<p><strong>Why can't we collect all the data in one big database?</strong></p>
+<ol>
+<li>Data ownership is problematic. You need informed consent from all patients.</li>
+<li>By assembling into big databases you lose the option to enforce any kind of governance over this data.</li>
+<li>It might be unsafe. Examples of big datasets that were thought to be safe but weren't: <a href="https://www.wired.com/2007/12/why-anonymous-data-sometimes-isnt/">Netflix prize</a>, <a href="https://www.theguardian.com/technology/2014/jun/27/new-york-taxi-details-anonymised-data-researchers-warn">NYC Taxi dataset</a>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Industry,-Research-&amp;-Development">
+<a class="anchor" href="#Industry,-Research-&amp;-Development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Industry, Research &amp; Development<a class="anchor-link" href="#Industry,-Research-&amp;-Development"> </a>
+</h2>
+<p>Research and Development are the research departments of companies. Their motivations overlap with academic researchers, they want to answer important questions. But there are two additional motivations:</p>
+<ol>
+<li>
+<strong>Intellectual Property</strong>. The relevant data or the ML model itself might be proprietary.</li>
+<li>
+<strong>Validation</strong>. A ML model in a healthcare setting needs certification to be approved.</li>
+</ol>
+<p>It's very expensive to certify healthcare AI applications. You need to verify that your application works for all kinds of patients in different settings. Specifically: different genders, age groups, ethnicities. You also need to make sure that the different devices that generate diagnostic data all work well with your algorithm. For this purpose you need access to private datasets. This is very difficult. It takes about 16 to 30 months to validate an algorithm, with costs from 1.5 to 2.5 million dollars. A huge burden for anyone developing an algorithm. AI will continue to grow in healthcare, but these kinds of costs and risks are a real obstacle.</p>
+<p><strong>What we need:</strong> an environment where algorithms can be validated on private datasets. Without ever moving or sharing the data. The algorithm IP has to be protected as well. If the weights of a deep learning model leaked, it would pose a great risk for the company developing the algorithm. An example for such a tool: <a href="https://healthitanalytics.com/news/ucsf-microsoft-develop-privacy-protecting-data-analytics-tool">BeeKeeper AI</a></p>
+<p>There are many reasons why industry already adopts these techniques for structured transparency. In addition to all the benefits for academic researchers, using these tools can give industry researchers a competitive advantage. They can speed up regulatory processes and reduce costs.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Consumers">
+<a class="anchor" href="#Consumers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Consumers<a class="anchor-link" href="#Consumers"> </a>
+</h2>
+<p>Consumers want better privacy. That's true, but far from the only point that can be improved by structured transparency. The goal: create information flows that maximize good in the world.</p>
+<p>One ancient information flow that could be improved: <strong>community wisdom.</strong> Folk tales, religion and community norms are forms of community wisdom. We hold on to these ancient forms of community wisdom. But because this is such a deep human desire, new ways of exchange appear with new technologies. One example is anonymous advice on the internet. Reddit, Quora, Health advice. There are thousands of communities on the internet for this kind of information flow.</p>
+<p>Word of mouth doesn't scale well for several reasons:</p>
+<p><strong>Reason 1:</strong> There are millions of products. Maybe you know no one that uses this product.</p>
+<p><strong>Reason 2:</strong> You might not feel comfortable asking people you know. If you wonder about a certain medication or if a particular doctor has a high reputation.
+</p>
+<div class="Toast Toast--tip">
+   <span class="Toast-icon"><svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg></span>
+   <span class="Toast-content"><b>Tip:</b> Some current information flows are held back by the need for privacy or anonymity or comfort. This is your opportunity: build something better! Using input and output privacy techniques.</span>
+</div>
+<strong>Reason 3:</strong> Missing trust. The key strength of word of mouth is trust. But online it's hard to trust someone.<br>
+Example: Online product reviews. Without verification, it's difficult to trust a review of a product. Or look at anonymous forums: which of these strangers can you trust?
+<p><strong>Reason 4:</strong> Wisdom sometimes is not with one single person. Wisdom can mean learning from the aggregate of our experiences. That's exactly what machine learning was built for!</p>
+<p>Focus on the goal: help people getting trusted information. Which they need to make everyday decisions.</p>
+<p>Remember the <a href="https://healthitanalytics.com/news/ucsf-microsoft-develop-privacy-protecting-data-analytics-tool">Polis system</a> from lesson 2: it's not about creating the most efficient, most scalable solutions. But about replicating information flows for community wisdom that have worked organically.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="News-Media">
+<a class="anchor" href="#News-Media" aria-hidden="true"><span class="octicon octicon-link"></span></a>News Media<a class="anchor-link" href="#News-Media"> </a>
+</h2>
+<p>News Media could also profit from structured transparency solutions.</p>
+<p>Journalists have to <a href="https://www.politico.eu/article/the-curse-and-blessing-of-the-anonymous-source/">protect their sources</a>, but want to get out their message. This is an excellent example of real-world, manual structured transparency.</p>
+<ul>
+<li>Input and output privacy: hiding the source and modifying the contents to prevent identification of the source.</li>
+<li>Input verification: by testifying that a source is credible.</li>
+<li>Output verification: journalists are subject to review by the editor. This provides governance over the information at hand.</li>
+</ul>
+<p>Which parts of this information flow could be improved?</p>
+<p><strong>Example: Whistleblowing.</strong> Journalists spend their careers on building a trusted network. A very manual process, with meetings and phone calls. There is a lot of stake for a whistleblower, they have to trust a journalist. It's a classic structured transparency problem. How to reveal information about the wrongdoing of an organization, without endangering yourself?<br>
+Today, there are Signal or WhatsApp that end-to-end encrypt your messages. But what is missing: <strong>you can't message someone anonymously</strong>. There is no way to use existing public-key cryptography techniques to prove that you are a member of a group. If you have explosive information about an organization, it makes a difference for your credibility if you can prove that you work there.</p>
+<p>There is also no anonymous search and discover feature. Most of this work must be done through phone calls, emails, network building. It's possible, but with a lot of friction. If there was less friction, there could be <strong>more stories and more accountability</strong> for people in positions of power.</p>
+<p><strong>Example: Disinformation.</strong> It's an input verification and output verification problem. With the rise of deepfakes, we cannot trust video anymore. We need better input verification. This is possible with embedded cryptography in cameras. The camera adds a cryptographic signature to the image. If you saw an image that no actual camera signed, you should be suspicious.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> This course should give you the means to break down information flows into subproblems.</span>
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Machine-Learning-Startups">
+<a class="anchor" href="#Machine-Learning-Startups" aria-hidden="true"><span class="octicon octicon-link"></span></a>Machine Learning Startups<a class="anchor-link" href="#Machine-Learning-Startups"> </a>
+</h2>
+<p>The essential challenge for any machine learning startup: <strong>Do you have the data?</strong> On day one you have no customers. You need a strategy to get a dataset that is big enough. Big enough to create an ML model that can solve someone's problem. This is why nearly all ML startups start with consulting. Consulting can give you a relationship with a big corporation with millions of users and their data.</p>
+<p>Data markets today are one of two very different kinds of markets. Either it's a race to the bottom where data is sold as fast as possible. Or it's a secretive industry where data is almost never sold.</p>
+<p><strong>Example: Financial data</strong></p>
+<ul>
+<li>On one hand, there is information about stock trades that is available to almost everyone. The only way to gain an advantage is to receive this information <em>a bit earlier</em>. That's why companies pay millions to get physically closer to the NASDAQ servers.</li>
+<li>On the other hand, there are hedge funds who discover new data that helps predict the market. They never tell anyone about it because others would compete.</li>
+</ul>
+<p>This is true for other industries. Some data is traded very fast, some of it almost never. The marketplace for data is fundamentally broken. It's the copy problem: If you sell data, every customer becomes your competitor. Both for use and sale of this data.</p>
+<p>What if the copy problem was solved? A creator could sell data in a way that they are always able to charge money for any derivative use.</p>
+<ol>
+<li>That would raise the prices for data that was previously sold as fast as possible.  </li>
+<li>The use of data that was previously locked away now could be sold. No customer would also become a competitor.</li>
+</ol>
+<p>Structured transparency solves this through a combination of all five guarantees. It's called <strong>Federated Data Networks</strong>. Instead of selling data, you sell the opportunity to run statistics on your data. If you're a hospital, you don't sell your MRI scans, but allow researchers to study the data <em>while it's in your hospital</em>. Only the high-level insights of the researchers leave the building. Data markets would explode in value. Everyone can participate and prices stay high. This technique is called <strong>Federated Learning.</strong> 
+</p>
+<div class="Toast Toast--tip">
+   <span class="Toast-icon"><svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg></span>
+   <span class="Toast-content"><b>Tip:</b> Privacy-preserving technologies will cause a step change in opportunities just like the ML revolution.</span>
+</div>
+<strong>Unlock access to data:</strong> You are a company that sells insights on political opinion. Today, in most cases you are not allowed to access the relevant data. You cannot use data on political opinion without consent. Remember <a href="https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal">Cambridge Analytica</a>. You needed a data market place where people could post their private information (political orientation) <strong>homomorphically encrypted</strong>. This allowed you to run analyses on this data. You needed consent from the users to publish aggregate data, but you would respect their privacy.
+<p><strong>Privacy protection can benefit users and companies:</strong> There are people who are unwilling to share data because of privacy concerns. With Differential Privacy, there is a relationship between <code>ε</code> and the accuracy of your analysis. With perfect privacy - setting <code>ε</code> to <code>0</code> - you cannot learn anything about the data. But offer no privacy at all and you might not be able to collect the data. Even if you, as a data analyst, didn't care about personal privacy at all. Only about the accuracy of your analysis. You would have to choose something in between to get the optimum accuracy.</p>
+<p><strong>What does a healthy data market look like?</strong> It's privacy-perserving, far more profitable and much less risky for everyone involved. Startups have access to all the data in the world from day one. They would of course have to pay for it, but it's all available. Who owns the data? Whoever collected it first. Today, this is mostly large enterprises. But tomorrow, it could be individual people who own their data. 
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> Data about people starts with people. The most profitable thing for them to do is never let go of the original copy of their data. Let the market come to you.</span>
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Consumers-Need-Structured-Transparency-Institutions">
+<a class="anchor" href="#Consumers-Need-Structured-Transparency-Institutions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Consumers Need Structured Transparency Institutions<a class="anchor-link" href="#Consumers-Need-Structured-Transparency-Institutions"> </a>
+</h2>
+<p><strong>The gist:</strong> There is a missing institution within the marketplace for private data. It should protect consumers from harm, and also enable a healthy data market place.</p>
+<p>A quick recap of <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/19/Our-Privacy-Opportunity-Part-3.html#Differential-Privacy-(DP">differential privacy and privacy budgets</a>): privacy budget is a measure of leakage that a data owner gives to a scientist studying their data. It is measured using a metric called <code>ε</code>. It can limit the probability that harm could come to a participant in a data study.</p>
+<p>Privacy budgets should be person-centric. A person's <code>ε</code> should be tracked across different institutions.  No individual data holder can ensure that people don't get hurt. Because they don't know where else that person's data might be hosted.</p>
+<p>We look at this problem from two perspectives, economics and public safety.</p>
+<h3 id="Economic-Perspective">
+<a class="anchor" href="#Economic-Perspective" aria-hidden="true"><span class="octicon octicon-link"></span></a>Economic Perspective<a class="anchor-link" href="#Economic-Perspective"> </a>
+</h3>
+<p><strong>Brilliant paper:</strong> <a href="https://arxiv.org/abs/1011.1375">Selling Privacy at Auction</a>. You should read at least the first few pages. The idea: If you sell data in a privacy-preserving way, you're not selling data itself but insights. But if you sell too many insights, somebody can use all these insights to recreate the original data. The privacy budget is all about preventing that from happening. <strong>By keeping track of the probability somebody could reconstruct your information.</strong></p>
+<p>But if you can only release so many insights before somebody can use these insights to reconstruct your data, then <strong><code>ε</code> itself is the scarce resource.</strong> At some point, no further data science can be applied to your information. As there is less and less <code>ε</code> going around, <strong>its price should increase.</strong>
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> Differential Privacy provides a way to <strong>quantify the cost of privacy.</strong></span>
+</div>
+<strong>Economics of privacy:</strong>
+<ul>
+<li>In federated data networks, data owners maintain control over the only copy of their data. We measure data leakage using <code>ε</code>.</li>
+<li>
+<code>ε</code> becomes an important factor in the price of a data point.</li>
+<li>It is a measure of scarcity, <em>how much is left of a dataset insight to sell</em>.</li>
+<li>People's interest to protect their privacy starts to align with the commercial incentive. Because businesses want to maintain control over the only copy of their information to keep prices high. Economic forces that used to work against privacy could soften or even work in favor of privacy.</li>
+</ul>
+<p> 
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> <code>ε</code> is an effective market mechanism to create healthy data markets that protect privacy.</span>
+</div>
+<h3 id="Public-Safety-Perspective">
+<a class="anchor" href="#Public-Safety-Perspective" aria-hidden="true"><span class="octicon octicon-link"></span></a>Public Safety Perspective<a class="anchor-link" href="#Public-Safety-Perspective"> </a>
+</h3>
+<p>The economic approach described above relies on an important piece of privacy infrastructure. It's called <strong>automatic privacy budgeting</strong> for remote data science. However, it is not yet mature.</p>
+<p>At the moment, the tooling is limited. There are individual algorithms for Differential Privacy available. But no <strong>end-to-end infrastructure</strong> to keep track of privacy budgets. One of the essential lessons: privacy doesn't come for free. We must think of it as a limited resource. But it is necessary to consistently keep track of this privacy budget.</p>
+<p>All this would only be useful to track individual privacy budgets. However, this isn't enough. Privacy budgets have to be person-centric to provide true protection! These systems can never be truly robust, unless someone, somewhere is <strong>keeping track of a person's <code>ε</code> across all institutions</strong> that have data about them.
+</p>
+<div class="Toast Toast--important">
+   <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
+   <span class="Toast-content"><b>Important:</b> A <strong>public institution</strong> should keep track of your global privacy budget.</span>
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Intelligence-Agencies,-Statistical-Services">
+<a class="anchor" href="#Intelligence-Agencies,-Statistical-Services" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intelligence Agencies, Statistical Services<a class="anchor-link" href="#Intelligence-Agencies,-Statistical-Services"> </a>
+</h2>
+<p>These are examples of the <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/11/Our-Privacy-Opportunity-Part-2.html#The-Recursive-Enforcement-Problem">recursive enforcement problem</a>.</p>
+<p>There are a lot of areas in government and statistical services that need better information flows.</p>
+<p><strong>Example: database queries.</strong> A government intelligence agency <a href="https://oxford.universitypressscholarship.com/view/10.1093/oso/9780190685515.001.0001/oso-9780190685515-chapter-1">asks a private company to reveal information</a> about a user. For example, the location history of a user. But they don't want to reveal <em>which</em> user they are looking for. (Because this could leak to the press and ruin the investigation.) The only way to do this without tools for structured transparency: the company has to reveal the data of all their users. This is a <strong>serious breach of privacy for all uninvolved users</strong>. They would have to trust that their information was not misused, if they even knew that their privacy was violated at all.</p>
+<p>With tools for structured transparency it would be possible to do a <strong>homomorphically encrypted database query</strong> and fetch just the one record that you needed.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> Structured transparency changes what can be possible to demand.</span>
+</div>
+Whether you agree or disagree if private companies should reveal data to state actors at all. It makes a difference if millions of people's data were revealed when this was not necessary!
+<h2 id="Regulators">
+<a class="anchor" href="#Regulators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Regulators<a class="anchor-link" href="#Regulators"> </a>
+</h2>
+<p>Writing regulation is hard. Privacy requirements precede the development of mature technology. But there is active research around privacy and regulators should look at the science.</p>
+<p>Regulations are sticky. Some current regulations (for example, <a href="https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act">HIPPA</a>) encode privacy protections that we view as misguided today. They often focus on anonymization. But better solutions are out there and regulators should look at the science. The US census bureau actually adopted differential privacy techniques for the last census.
+</p>
+<div class="Toast Toast--important">
+   <span class="Toast-icon"><svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg></span>
+   <span class="Toast-content"><b>Important:</b> Laws must be updated with new privacy technologies.</span>
+</div>
+<strong>Analogy: Privacy loss is like radiation.</strong> Privacy leakages accumulate. A little bit is okay, but a lot of it can do harm.
+<p>Current privacy laws are not written from this global perspective. Most laws focus on reducing the individual harm of any particular interaction, any particular data release. <strong>What we need is a holistic regulation</strong> that limits the amount of "radiation" that any consumer will ever experience.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-Next-Steps-for-Structured-Transparency">
+<a class="anchor" href="#The-Next-Steps-for-Structured-Transparency" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Next Steps for Structured Transparency<a class="anchor-link" href="#The-Next-Steps-for-Structured-Transparency"> </a>
+</h2>
+<p>We looked at how structured transparency can solve the problems of many different groups of people. <strong>But there is one question remaining: When?</strong> Timing is important.</p>
+<p>The current techniques are the result of decades of work. Some of those techniques are working on your phone right now. For example, <a href="https://arxiv.org/pdf/1811.03604v2.pdf">federated learning to predict your next words</a>. Millions of users switched to <a href="https://signal.org/en/">Signal</a> to get better information flows. Consumer demand has already started.</p>
+<p>What are the next steps, how can we solve the information flows from <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/08/Our-Privacy-Opportunity-Part-1.html">lesson 2</a>? Remember, solving privacy would have great benefits:</p>
+<ul>
+<li>Researchers can access data to solve important problems</li>
+<li>Consumers can reclaim agency of their data and fight monopolies</li>
+<li>Citizen-lead data projects can affect policy and protect their environment</li>
+<li>Cross-border data governance does not lead to new colonialism</li>
+<li>Healthy flow for democratic feedback</li>
+<li>More accountability for powerful actors</li>
+</ul>
+<p><strong>First step:</strong> Awareness. A shared vision. The execution of those information flows will require multi-disciplinary action. We need policy changes and activism.</p>
+<p><strong>Next step:</strong> Making it easy to build. Wrap up complex algorithms in easy-to-use tools. So that researchers and developers can adopt the techniques covered in this course. This is a great development opportunity and a great role for open source communities. Free open source software will ensure that any developer can have an accessible toolkit.</p>
+<p><strong>Another way:</strong> Extend current popular tools to have privacy-preserving abilities. <strong>SQL</strong> is not by default a privacy-preserving language. Multiple research teams are working on enhancing SQL to support DP queries. Combining a familiar language like SQL with sophisticated privacy protection. The result looks and feels like SQL, but the answers have DP baked into them by default.</p>
+<p><strong>Practical challenges:</strong> Algorithm speed, network connectivity, balancing the trade-offs of each technique. But these are exciting R&amp;D opportunities.</p>
+<p>Once the complex algorithms are wrapped in <strong>easy-to-use tools</strong>, those tools can be wrapped into <strong>easy-to-use consumer products</strong>. So that you as a consumer don't have to think about it, like <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/20/Our-Privacy-Opportunity-Part-4.html#Tool-1:-Cryptographic-Signatures">HTTPS</a>.
+</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content"><b>Note:</b> Regulation might one day require companies to adopt these technologies. But companies are already adopting these techniques today, way before it will get mandatory.</span>
+</div>
+<strong>Product strategy:</strong> Proprietary software is a short-term strategy for companies. But it will be <a href="https://techhq.com/2020/09/why-big-tech-is-quietly-collaborating-on-open-source-ai/">replaced by free open-source software</a> in the long run. Just like it happened with machine learning packages. We all use the same handful of open-source tools today.
+<p>The long term defensible product strategy is to <strong>provide information</strong> within the forthcoming networks of data. It's about building information flows that help people achieve their goals in the best possible way.</p>
+<p><strong>Opportunities:</strong></p>
+<ul>
+<li>If we want an <strong>existing technology</strong> to become mainstream: it's an opportunity for entrepreneurs, investors, activists and lawmakers.</li>
+<li>If we want a <strong>novel technique</strong> to become mainstream: it's a research opportunity. And an opportunity for government investment.</li>
+<li>If we want <strong>technologies that don't exist yet</strong>: that's an opportunity for science fiction authors. And for all of us to daydream.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conclusion">
+<a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
+</h2>
+<p>This summary concludes the first course of the Private AI series. I hope these summaries were helpful for you!</p>
+<p>Image by <a href="https://pixabay.com/users/quadronet_webdesign-1555018/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1004250">Dirk Wohlrabe</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1004250">Pixabay</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><a class="u-url" href="/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/25/Our-Privacy-Opportunity-Part-5.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p>© Johannes Stutz</p>
+        <!--<p>I&#39;m Johannes Stutz, I blog about my learning journey into AI.</p>-->
+        <p>This website uses <a href="https://github.com/fastai/fastpages">fastpages</a>.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://twitter.com/daflowjoe" title="daflowjoe"><svg class="svg-icon" viewBox="0 0 16 16" width="100" height="100"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li><li><a rel="me" href="https://github.com/johannesstutz" title="johannesstutz"><svg class="svg-icon" viewBox="0 0 16 16" width="100" height="100"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://www.linkedin.com/in/johannes-stutz" title="Johannes Stutz"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg></a></li>
+
+  <li><a rel="me" href="/feed.xml" title="RSS"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

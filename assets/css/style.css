@@ -520,7 +520,7 @@ a.category-tags-link { color: #C1292E !important; text-decoration: none !importa
 
 .site-nav .page-link, a.site-title, a.post-link { text-decoration: none !important; }
 
-.site-nav .page-link:hover, a.site-title:hover, a.post-link:hover { text-decoration: underline !important; }
+.site-nav .page-link:hover, a.site-title:hover, a.post-link:hover, .section-nav li a:hover, a.category-tags-link:hover { text-decoration: underline !important; }
 
 .site-nav .page-link { font-size: 17px; }
 
