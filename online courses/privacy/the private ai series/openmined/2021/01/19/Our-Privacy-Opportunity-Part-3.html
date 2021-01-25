@@ -393,8 +393,8 @@ So if Andrew averages over enough people in the course, the noise of the random 
 </h3>
 <p>Output privacy is actually a bit more nuanced than we covered before. It's not a binary thing - is output privacy guaranteed or not. This becomes clear when we take another look at our previous example, the average age survey. What if we didn't add numbers between <code>-100</code> and <code>100</code>, but between <code>-2</code> and <code>2</code>? That would not be great privacy protection. While Andrew wouldn't know your exact age, he would have a pretty good idea.</p>
 <p>Output privacy is more like a degree of protection. The more randomness people add to their own data, the better the privacy protection. Differential Privacy lets us measure the <em>difference</em> between a strong privacy guarantee and a weak one. In our example, this is the measure between choosing numbers between <code>-100</code> and <code>100</code>, or between <code>-1</code> and <code>1</code>. In DP, this measurement is called <strong>Epsilon <code>ε</code></strong>.</p>
-<p>[Update 25.01.2021] We can visualize <code>ε</code> with noise that we add to an image.
-<img src="/images/copied_from_nb/../images/articles/2021-openmined-pt3/differential-privacy.png" alt="" title="Credit: https://generated.photos/"></p>
+<p>[Update 25.01.2021] Imagine <code>ε</code> like pixelating an image to hide someone's identity. The more noise we add to the image, the less <code>ε</code> goes out.
+<img src="/images/copied_from_nb/../images/articles/2021-openmined-pt3/differential-privacy.png" alt="" title="This is a face created by an AI. Credit: https://generated.photos/"></p>
 <p><strong>Example:</strong> A medical research center has data of <code>3,000</code> patients. It wants to let outside researchers use their data to cure cancer. How can they make sure that researchers can't reverse engineer their statistical results back to the input medical records? By giving each researcher a <strong>privacy budget</strong>.
 </p>
 <div class="Toast">
