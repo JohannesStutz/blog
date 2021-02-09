@@ -505,7 +505,7 @@ table td { background-color: #fdfdfd; }
 
 pre, code { background-color: #E6EFE9; }
 
-p code, code { color: #0F7173; }
+p code, code, pre { color: #0F7173; }
 
 /* Set link colors */
 a, a:visited { color: #0F7173 !important; text-decoration: underline !important; }
