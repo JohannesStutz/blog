@@ -150,7 +150,12 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This tutorial teaches you to train a neural network to distinguish the person in a webcam shot from the background. Foreground/background detection can be useful in many applications. Examples are adding bokeh to photos (portrait mode of smartphones) or automatic removal of the background in photo editing.</p>
+<p> </p>
+<video width="640" height="360" controls="" autoplay="" loop="" muted="" playsinline="">
+  <source src="/images/articles/2021-backgroundblur-2/smooth.mp4" type="video/mp4"></source>
+  <source src="/images/articles/2021-backgroundblur-2/smooth.webm" type="video/webm"></source>
+Your browser does not support the video tag.
+</video><p>This tutorial teaches you to train a neural network to distinguish the person in a webcam shot from the background. Foreground/background detection can be useful in many applications. Examples are adding bokeh to photos (portrait mode of smartphones) or automatic removal of the background in photo editing.</p>
 <p>I did this as a little project inspired by OpenMined's <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/08/Our-Privacy-Opportunity-Part-1.html">privacy course</a>. Blurring the background during a Zoom call is an example of <a href="https://deeplearning.berlin/online%20courses/privacy/the%20private%20ai%20series/openmined/2021/01/19/Our-Privacy-Opportunity-Part-3.html#Output-Privacy">output privacy</a>. It refers to the concept that you often want to share some information (that you are present in a video call, how you look, ...) but not additional information (your location, the stuff in your living room, the medication on the shelf behind you).</p>
 <p>We begin with collecting our own data, annotating images, and end up with a useful model. In this blog post, I'll guide you through the process. We'll be using a webcam and SuperAnnotate to create our dataset. Then, we'll use fastai to train a neural network (specifically, a U-Net) to recognize a person in a frame. I assume that you know the basics of fastai. The training process is straightforward however, so it's a good example of how the library works even if you never used it.</p>
 
@@ -983,7 +988,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now it's time to hide the mess in the background! In Part 2 we'll use our trained model to blur the background of a video.</p>
+<p>Now it's time to hide the mess in the background! In <a href="https://deeplearning.berlin/fastai/privacy/getting%20started/2021/02/10/Background-Blur-Part-2.html">Part 2</a> we'll use our trained model to blur the background of a video.</p>
 
 </div>
 </div>
