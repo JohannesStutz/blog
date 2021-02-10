@@ -7,7 +7,7 @@
 
   <li><a rel="me" href="https://www.linkedin.com/in/johannes-stutz" title="Johannes Stutz"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg></a></li>
 
-  <li><a rel="me" href="{{ 'feed.xml' | relative_url }}" title="RSS"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use></svg></a></li>
+  <!--<li><a rel="me" href="{{ 'feed.xml' | relative_url }}" title="RSS"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use></svg></a></li>-->
 
 
   {%- for glb in social.gitlab -%}{%- if glb.username and glb.instance -%}<li><a rel="me" href="https://{{ glb.instance | cgi_escape | escape}}/{{glb.username}}" title="{{ glb.username | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#gitlab' | relative_url }}"></use></svg></a></li>{%- endif -%}{%- endfor -%}
