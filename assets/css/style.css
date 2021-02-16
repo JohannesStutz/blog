@@ -487,7 +487,7 @@ body { color: #191308 !important; }
 
 @media screen and (max-width: 1200px) { article, .home { padding: 10px 15px; } #twitter-corner-logo { display: none; } }
 
-@media screen and (min-width: 1200px) { .post img.wide { max-width: 130% !important; margin-left: 50% !important; transform: translateX(-50%); } }
+@media screen and (min-width: 1200px) { .post img { max-width: 130% !important; margin-left: 50% !important; transform: translateX(-50%); } }
 
 /* Header */
 .site-header { border-top: 0; }
