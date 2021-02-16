@@ -32,7 +32,7 @@ body {
 }
 
 @media screen and (min-width: 1200px) {
-	.post img.wide {
+	.post img {
 		max-width: 130% !important;
 		margin-left: 50% !important;
 		transform: translateX(-50%);
