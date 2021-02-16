@@ -26,6 +26,17 @@ body {
 	article, .home {
 		padding: 10px 15px;
 	}
+	#twitter-corner-logo {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.post img.wide {
+		max-width: 130% !important;
+		margin-left: 50% !important;
+		transform: translateX(-50%);
+	}
 }
 
 /* Header */
