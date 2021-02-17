@@ -42,7 +42,7 @@ minima:
     twitter: daflowjoe
     github: johannesstutz
 # Set this to true to get LaTeX math equation support
-use_math: 
+use_math: true
 
 # Set this to true to display the summary of your blog post under your title on the Home page.
 show_description: true
@@ -82,7 +82,7 @@ html_escape:
 future: true
 theme: minima
 plugins:
-  - jekyll-feed
+#  - jekyll-feed
   - jekyll-gist
   - jekyll-octicons
   - jekyll-toc
